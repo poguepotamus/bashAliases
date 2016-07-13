@@ -1,4 +1,4 @@
-#T2ouV16.0708.1230
+#T2ouV16.0713.1016.shell
 #testing -
   alias FTM='echo This is the First test message; wait; alias test=STM'
   alias STM='echo This is the Second test message; wait; alias test=FTM'
@@ -170,7 +170,7 @@
   BDPDir='/home/alex/dropbox/matthew/projects/keepTalking/programFiles'
   alias projectBDP='echo "atom $BDPDir"; wait; cd $BDPDir'
   #bash -
-    BA=~/.bash_aliases
+    BA=/home/alex/customBash/bashAliases
     alias projectAliases='atom $BA'
     alias projectAlias='atom $BA'
     alias geanyAliases='geany $BA'

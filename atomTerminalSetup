@@ -1,0 +1,6 @@
+#T2ouV16.0713.1016.shell
+. /home/alex/customBash/bashAliases
+wait
+cd
+wait
+bashreset
