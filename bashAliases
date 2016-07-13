@@ -1,0 +1,216 @@
+#T2ouV16.0708.1230
+#testing -
+  alias FTM='echo This is the First test message; wait; alias test=STM'
+  alias STM='echo This is the Second test message; wait; alias test=FTM'
+  alias test='FTM'
+#This is a test to github
+#bash_notes
+  #Standby alias
+  #Lines function
+  #Chrome functions where chrome --new $site --old $site --newtab
+
+#chrome -
+  user=0
+  minbox='https://inbox.google.com/u/0/'
+  xinbox='https://inbox.google.com/u/1/'
+  gmail='https://mail.google.com/mail/u/2/'
+  ymail='https://mail.yahoo.com/'
+  slack='https://devict.slack.com/messages/'
+  facebook='https://www.facebook.com/'
+  todoist='https://todoist.com/app/'
+  keep='https://keep.google.com/'
+  calendar='https://calendar.google.com/'
+  github='https://github.com/'
+  contacts='https://contacts.google.com/'
+  blackboard='https://blackboard.wichita.edu/'
+  webassign='https://webassign.net/login.html/'
+  mywsu='https://www.wichita.edu/'
+  makedrive='https://drive.google.com/drive/u/2/starred'
+  mcp='https://makeict.greenlightgo.org:444'
+  makeict='https://makeict.org/'
+  WA='https://members.makeict.org/'
+  makewiki='makeict.org/wiki'
+  chess='https://www.chess.com/'
+  music='https://play.google.com/music/listen?u=0'
+
+  alias minbox='chromium $minbox'
+  alias newminbox='chromium; wait; minbox'
+  alias xinbox='chromium $xinbox'
+  alias newxinbox='chromium; wait; xinbox'
+  alias gmail='chromium $gmail'
+  alias newgmail='chromium; wait; gmail'
+  alias ymail='chromium $ymail'
+  alias newymail='chromium; wait; ymail'
+  alias slack='chromium $slack'
+  alias newslack='chromium; wait; slack'
+  alias facebook='chromium $facebook'
+  alias newfacebook='chromium; wait; facebook'
+  alias todoist='chromium $todoist'
+  alias newtodoist='chromium; wait; todoist'
+  alias keep='chromium $keep'
+  alias newkeep='chromium; wait; keep'
+  alias calendar='chromium $calendar'
+  alias newcalendar='chromium; wait; calendar'
+  alias github='chromium $github'
+  alias newgithub='chromium; wait; github'
+  alias contacts='chromium $contacts'
+  alias newcontacts='chromium; wait; contacts'
+  alias blackboard='chromium $blackboard'
+  alias newblackboard='chromium; wait; blackboard'
+  alias webassign='chromium $webassign'
+  alias newwebassign='chromium; wait; webassign'
+  alias mywsu='chromium $mywsu'
+  alias newmywsu='chromium; wait; mywsu'
+  alias makedrive='chromium $makedrive'
+  alias makedrive='chromium; wait; makedrive'
+  alias mcp='chromium $mcp'
+  alias newmcp='chromium; wait; mcp'
+  alias makeict='chromium $makeict'
+  alias newmakeict='chromium; wait; makeict'
+  alias WA='chromium $WA'
+  alias newWA='chromium; wait; WA'
+  alias makewiki='chromium $makewiki'
+  alias newmakewiki='chromium; wait; makewiki'
+  alias chess='chromium $chess'
+  alias newchess='chromium; wait; chess'
+  alias music='chromium $music'
+  alias newmusic='chromium; wait; music'
+
+
+  alias newtab='chromium 'chrome://newtab'; wait'
+  alias chrome='chromium'
+
+  alias sites='
+    echo inbox \$user..gmail $user..ymail
+    echo slack........facebook.....todoist
+    echo keep.........calendar.....github
+    echo contacts.....blackboard...webassign
+    echo mywsu......New tabs new$site
+    '
+  #quickSetups
+    alias communications='minbox; xinbox; gmail; ymail; slack; facebook; keep; calendar'
+#programs -
+  alias pdf='evince'
+  alias word='libreoffice --writer'
+  #games -
+    alias games='cat ~/games/games'
+    alias gameFdepths='~/games/fdepths/fdepths'
+    alias gameSST='~/games/sst/sst'
+    alias gameSst='~/games/sst/sst'
+    alias gamesst='~/games/sst/sst'
+    alias gameSudoku='~/games/sudoku/nsudoku'
+    alias gameEmpire='~/games/empire/vms-empire'
+    alias gameCmines='~/games/cgames/cmines/cmines'
+    alias gameCsokoban='~/games/cgames/csokoban/csokoban'
+    alias gameCblocks='~/games/cgames/cblocks/cblocks'
+    alias gameUnnethack='~/unnethack/bin/unnethack'
+#xprograms -
+  #notes -
+    notesDir='/home/alex/Dropbox/matthew'
+    notesFile=''$notesDir'/notes.txt'
+    alias notes='cat $notesFile; wait; echo '''
+    alias touchNotes='touch $notesFile'
+    alias removeAllNotes='touchNotes; wait; rm $notesFile'
+    alias addnote='touchNotes; wait; echo "$1" >> $notesFile'
+    alias addNote='touchNotes; wait; echo "$1" >> $notesFile'
+    alias addnotes='touchNotes; wait; echo "$1" >> $notesFile'
+    alias addNotes='touchNotes; wait; echo "$1" >> $notesFile'
+    alias noteline='touchNotes; wait; echo "" >> $notesFile'
+    alias noteLine='touchNotes; wait; echo "" >> $notesFile'
+    alias editnotes='touchNotes; wait; vim $notesFile'
+    alias editNotes='touchNotes; wait; vim $notesFile'
+    alias geanynotes='touchNotes; wait; geany $notesFile'
+    alias geanyNotes='touchNotes; wait; geany $notesFile'
+  #blogIdeas -
+    blogDir='/home/alex/Dropbox/matthew/blog/'
+    blogIdeasFile=''$blogDir'/blog.ideas'
+    alias touchBlogIdeas='touch $blogIdeasFile'
+    alias blogIdeas='touchBlogIdeas; wait; cat $blogIdeasFile'
+    alias blogideas='touchBlogIdeas; wait; cat $blogIdeasFile'
+    alias editblogideas='touchBlogIdeas; wait; vim $blogIdeasFile'
+    alias editBlogideas='touchBlogIdeas; wait; vim $blogIdeasFile'
+    alias editBlogideas='touchBlogIdeas; wait; vim $blogIdeasFile'
+    alias editBlog='touchBlogIdeas; wait; vim $blogIdeasFile'
+    alias blogIdea='touchBlogIdeas; wait; echo "$1" >> $blogIdeasFile'
+    alias blogidea='touchBlogIdeas; wait; echo "$1" >> $blogIdeasFile'
+    alias addBlogIdea='touchBlogIdeas; wait; echo "$1" >> $blogIdeasFile'
+    alias addBlogIdeas='touchBlogIdeas; wait; echo "$1" >> $blogIdeasFile'
+    alias addblogidea='touchBlogIdeas; wait; echo "$1" >> $blogIdeasFile'
+  #fun -
+    #battery -
+      b1='echo |-------------------------------------------------------|- BATTERY -|-------------------------------------------------------|'
+      alias bat='$b1;upower -i /org/freedesktop/UPower/devices/battery_BAT1| grep -E "state|to\ full|percentage"'
+      alias batInfo='upower -i /org/freedesktop/UPower/devices/battery_BAT1'
+    #Weather -
+      w1='echo |- - - - - - - - - - - - - - - - - - - - - - - - - - - -|- WEATHER -|- - - - - - - - - - - - - - - - - - - - - - - - - - - -|'
+      w2='echo |---------------------------------------------------------------------------------------------------------------------------|'
+      alias weather='$w2;$w1;$w2;curl wttr.in'
+    #time/date -
+      alias curtime='date'
+      alias now='date'
+      alias curTime='date'
+#bash -
+  #usb -
+    alias xmount='sudo mount -t vfat -o uid=alex,gid=users /dev/sdb1 /home/alex/mnt/usb1; cd ~/mnt/usb1'
+    alias xdismount='cd ~/; wait; sudo eject sdb1; cd'
+    alias xunmount='cd ~/; wait; sudo eject sdb1; cd'
+  #preferences -
+    alias ll='ls -l'
+    alias lall='ls -l -a'
+    alias lal='ls -l -a'
+    alias del='rm -rf'
+  #reload -
+    alias bashreset='reset; wait; exec bash; wait; echo "-------------------"; wait; echo "Bash has been reset"; wait; echo "-------------------"'
+#lockscreen -
+  cLS='/home/alex/dropbox/matthew/photos/backgrounds/curLapLock/curLapLock.jpg'
+  alias lock='i3lock -c 172A30 -d 9999999 -I 9999999 -i $cLS -f -e'
+  alias lockOn='xautolock -time 5 -locker "i3lock -c 172A30 -d 9999999 -I 9999999 -i $cLS -f -e" &'
+  alias lockOff='killall xautolock'
+#projects -
+  BDPDir='/home/alex/dropbox/matthew/projects/keepTalking/programFiles'
+  alias projectBDP='echo "atom $BDPDir"; wait; cd $BDPDir'
+  #bash -
+    BA=~/.bash_aliases
+    alias projectAliases='atom $BA'
+    alias projectAlias='atom $BA'
+    alias geanyAliases='geany $BA'
+    alias geanyAlias='geany $BA'
+    alias editAliases='vim $BA'
+    alias editAlias='vim $BA'
+  #csgoCustomConfig
+    alias projectCS='atom customConfig; wait; cd ~/customConfig'
+    alias projectcs='atom customConfig; wait; cd ~/customConfig'
+    alias projectCs='atom customConfig; wait; cd ~/customConfig'
+  #exercism -
+    alias learnPython='atom ~/exercism/python; wait; cd ~/exercism/python; wait; clear; wait; exec bash'
+    alias learnProgramming='atom ~/exercism; wait; cd ~/exercism; wait; clear; wait; exec bash'
+    alias projectExercism='atom ~/exercism; wait; cd ~/exercism; wait; clear; wait; exec bash'
+  #website -
+  #makeICT -
+    #makerMondays -
+      alias makerMondays='mcp; WA; wiki; makedrive; makeict'
+      alias makerMonday='mcp; WA; wiki; makedrive; makeict'
+    #keys -
+      curNameListDir='~/Dropbox/matthew/makeict/projects/keys/cq'
+      curNameList=''$curNameListDir'/nameList.txt'
+      autoKeyFormsFunction () {
+        page=1
+        input="nameList.txt"
+        while IFS= read -r name
+        do
+          pdftk EPSON001.PDF cat $page output "$name.pdf"
+          ((page += 1))
+        done < "$input"
+      }
+      alias autoKeyForms=autoKeyFormsFunction
+      alias giveKey='makeNameList; wait; echo $1 >> '$curNameList''
+      alias givenKeys='makeNameList; wait; cat '$curNameList''
+      alias editKeys='makeNameList; wait; vim '$curNameList''
+      alias makeNameList='touch '$curNameList''
+    #cashBo -x
+      alias projectCashBox='atom ~/Dropbox/makeict/cashBox; /home/alex/Downloads/arduino-1.6.9/arduino; cd ~/Dropbox/makeict/cashBox'
+  #school -
+    alias school='cd Dropbox/matthew/school/csu2016/calcII; newMyWSU; blackboard; webassign'
+  #xpass -
+    xpassDir='Dropbox/matthew/security'
+    alias projectXpass='cd $xpassDir; atom $xpassDir'
