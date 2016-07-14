@@ -76,17 +76,9 @@
   alias music='chromium $music'
   alias newmusic='chromium; wait; music'
 
-
   alias newtab='chromium 'chrome://newtab'; wait'
   alias chrome='chromium'
 
-  alias sites='
-    echo inbox \$user..gmail $user..ymail
-    echo slack........facebook.....todoist
-    echo keep.........calendar.....github
-    echo contacts.....blackboard...webassign
-    echo mywsu......New tabs new$site
-    '
   #quickSetups
     alias communications='minbox; xinbox; gmail; ymail; slack; facebook; keep; calendar'
 #programs -
