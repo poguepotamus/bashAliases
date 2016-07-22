@@ -154,11 +154,6 @@
       alias del='rm -rf'
     #reload -
       alias bashreset='reset; wait; exec bash; wait; echo "-------------------"; wait; echo "Bash has been reset"; wait; echo "-------------------"'
-  #lockscreen -
-    cLS='/home/alex/dropbox/matthew/photos/backgrounds/curLapLock/curLapLock.jpg'
-    alias lock='i3lock -c 172A30 -d 9999999 -I 9999999 -i $cLS -f -e'
-    alias lockOn='xautolock -time 5 -locker "i3lock -c 172A30 -d 9999999 -I 9999999 -i $cLS -f -e" &'
-    alias lockOff='killall xautolock'
   #projects -
     BDPDir='/home/alex/dropbox/matthew/projects/keepTalking/programFiles'
     alias projectBDP='echo "atom $BDPDir"; wait; cd $BDPDir'
