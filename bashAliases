@@ -143,10 +143,37 @@
         alias now='date'
         alias curTime='date'
   #bash -
-    #usb -
-      alias xmount='sudo mount -t vfat -o uid=alex,gid=users /dev/sdb1 /home/alex/mnt/usb1; cd ~/mnt/usb1'
-      alias xdismount='cd ~/; wait; sudo eject sdb1; cd'
-      alias xunmount='cd ~/; wait; sudo eject sdb1; cd'
+    #drives -
+      alias drives='sudo fdisk -l'
+      makeDriveDir='/dev/sdb1'
+      makeDriveType='vfat'
+      alias mdmnt=mdmntFunction
+        mdmntFunction () {
+          sudo mkdir /media/alex/makeDrive
+          sudo mount -t "$makeDriveType" /dev/"$makeDriveDir" /media/alex/makeDrive
+          cd /media/alex/makeDrive
+        }
+      alias umdmnt=umdmntFunction
+        umdmntFunction () {
+          cd /media/alex
+          sudo umount /media/alex/makeDrive
+          sudo rmdir /media/alex/makeDrive
+          sync
+        }
+      alias mntDrive=mntDriveFunction
+        mntDriveFunction () {
+          echo '<drives> will output drives for $driveType and $driveDir'
+          echo 'sudo mkdir /media/alex/$driveNick'
+          echo 'sudo mount -t $driveType /dev/$driveDir /media/alex/$driveNick'
+          echo 'cd /media/alex/makeDrive'
+        }
+      alias umntDrive=umntDriveFunction
+        umntDriveFunction () {
+          echo 'change directory outside drive i.e. /media/alex'
+          echo 'sudo umount /media/alex/$driveNick'
+          echo 'sudo rmdir /media/alex/$driveNick'
+          echo '`sync` will remove caching that the mount leaves behind'
+        }
     #preferences -
       alias ll='ls -l'
       alias lall='ls -l -a'
@@ -181,19 +208,29 @@
           alias makerMondays='keyInfo; mscMake'
           alias makerMonday='keyInfo; mscMake'
         #keys -
-          curNameListDir='~/Dropbox/matthew/makeict/projects/keys/cq'
+          curNameListDir='/home/alex/Dropbox/matthew/makeict/projects/keys/cq'
           curNameList=''$curNameListDir'/nameList.txt'
-          autoKeyFormsFunction () {
-            page=1
-            input="nameList.txt"
-            while IFS= read -r name
-            do
-              pdftk EPSON001.PDF cat $page output "$name.pdf"
-              ((page += 1))
-            done < "$input"
-          }
+          PDFFile=''$curNameListDir'/EPSON001.PDF'
+          quickFormPDFDir='/media/alex/makeDrive'
+          quickFormPDF=''$quickFormPDFDir'/EPSON001.PDF'
+          alias quickAutoKeyForms=quickAutoKeyFormsFunction
+            quickAutoKeyForms () {
+              PDFFile="$quickFormPDF"
+              autoKeyFormsFunction
+              PDFFile=''$curNameListDir'/EPSON001.PDF'
+            }
           alias autoKeyForms=autoKeyFormsFunction
+            autoKeyFormsFunction () {
+              page=1
+              input="$curNameList"
+              while IFS= read -r name
+              do
+                pdftk "$PDFFile" cat $page output "$name.pdf"
+                ((page += 1))
+              done < "$input"
+            }
           alias giveKey='makeNameList; wait; echo $1 >> '$curNameList''
+          alias givekey='makeNameList; wait; echo $1 >> '$curNameList''
           alias givenKeys='makeNameList; wait; cat '$curNameList''
           alias editKeys='makeNameList; wait; vim '$curNameList''
           alias makeNameList='touch '$curNameList''
