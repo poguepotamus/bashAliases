@@ -145,7 +145,7 @@
   #bash -
     #drives -
       alias drives='sudo fdisk -l'
-      makeDriveDir='/dev/sdb1'
+      makeDriveDir='sdb1'
       makeDriveType='vfat'
       alias mdmnt=mdmntFunction
         mdmntFunction () {
@@ -208,7 +208,7 @@
           alias makerMondays='keyInfo; mscMake'
           alias makerMonday='keyInfo; mscMake'
         #keys -
-          curNameListDir='/home/alex/Dropbox/matthew/makeict/projects/keys/cq'
+          curNameListDir='/home/alex/Dropbox/matthew/makeict/projects/keys/zt'
           curNameList=''$curNameListDir'/nameList.txt'
           PDFFile=''$curNameListDir'/EPSON001.PDF'
           quickFormPDFDir='/media/alex/makeDrive'
