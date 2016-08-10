@@ -143,44 +143,120 @@
         alias now='date'
         alias curTime='date'
   #bash -
+    numInDir () {
+      find "$1"/* -maxdepth 0 -type d | wc -l
+    }
+    numDrives () {
+      numInDir $mntDir
+    }
+    checkVar=''
+    setCheck () {
+      checkVar=$1
+    }
+    check () {
+      eval checking=\$$checkVar
+      echo "$checking"
+    }
+    alias ck=check
     #drives -
       alias drives='sudo fdisk -l'
+      mntDir='/home/alex/mnt'
       makeDriveDir='sdb1'
       makeDriveType='vfat'
-      alias mdmnt=mdmntFunction
-        mdmntFunction () {
-          sudo mkdir /media/alex/makeDrive
-          sudo mount -t "$makeDriveType" /dev/"$makeDriveDir" /media/alex/makeDrive
-          cd /media/alex/makeDrive
-        }
-      alias umdmnt=umdmntFunction
-        umdmntFunction () {
-          cd /media/alex
-          sudo umount /media/alex/makeDrive
-          sudo rmdir /media/alex/makeDrive
-          sync
-        }
-      alias mntDrive=mntDriveFunction
-        mntDriveFunction () {
-          echo '<drives> will output drives for $driveType and $driveDir'
-          echo 'sudo mkdir /media/alex/$driveNick'
-          echo 'sudo mount -t $driveType /dev/$driveDir /media/alex/$driveNick'
-          echo 'cd /media/alex/makeDrive'
-        }
-      alias umntDrive=umntDriveFunction
-        umntDriveFunction () {
-          echo 'change directory outside drive i.e. /media/alex'
-          echo 'sudo umount /media/alex/$driveNick'
-          echo 'sudo rmdir /media/alex/$driveNick'
-          echo '`sync` will remove caching that the mount leaves behind'
-        }
+      makeDriveName='makeDrive'
+      tried='0'
+      getmntInfo () {
+        clear
+        x=''
+        mntDriveType='vfat'
+        mntDriveDir='sdb1'
+        mntDriveName='DefaultDriveName'
+        drives
+        if (("$tried"=='1')); then
+          echo "You did not enter a valid value, please try again"
+        fi
+        read -p "Is the drive \`vfat/sdb1\`? " -n 1 x; while read -n 1 -t .01 y; do x="$x$y"; done
+        echo; wait
+        if [[ "$x" == y* ]] || [[ "$x" == n* ]]; then
+          if [[ "$x" == y* ]]; then
+            read -p "What do you want the drive to be named? " mntDriveName
+          else
+            read -p "What is the drive type? " mntDriveType
+            read -p "What is the drive directory? " mntDriveDir
+            read -p "What do you want the drive to be named? " mntDriveName
+          fi
+        else
+          tried='1'
+          mnt
+        fi
+        tried='0'
+      }
+      mntDrive () { #Needs drive type, name, and direcotry to mount. Can get with getmntInfo.
+        sudo mkdir "$mntDir"/"$mntDriveName"
+        sudo mount -t "$mntDriveType" /dev/"$mntDriveDir" "$mntDir"/"$mntDriveName"
+        cd "$mntDir"/"$mntDriveName"
+      }
+      mnt () {
+        getmntInfo
+        wait
+        mntDrive
+      }
+      getumntInfo () {
+        numDrives=$(numInDir "$mntDir")
+        #if [[ numDrives == 0 ]]; then
+          #umntDriveFullDir='$(find "$mntDir"/* -maxdepth 0 type -d)'
+        ls -l /home/alex/mnt
+        read -p "Which drive would you like to unmount? " umntDriveName
+      }
+      umntDrive () {
+        if [[ $(pwd) == "$mntDir"/"$umntDriveName"* ]]; then
+          cd "$mntDir"
+        fi
+        sudo umount "$mntDir"/"$umntDriveName"
+        sudo rmdir "$mntDir"/"$umntDriveName"
+        sync
+      }
+      umnt () {
+        getumntInfo
+        wait
+        umntDrive
+      }
+      umntDriveForce () {
+        if [[ $(pwd) == "$mntDir"/"$umntDriveName"* ]]; then
+          cd "$mntDir"
+        fi
+        sudo umount -l "$mntDir"/"$umntDriveName"
+        sudo rmdir "$mntDir"/"$umntDriveName"
+        sync
+      }
+      umntForce () {
+        getumntInfo
+        wait
+        umntDriveForce
+      }
+      mdmnt () {
+        mntDriveName=$makeDriveName
+        mntDriveDir=$makeDriveDir
+        mntDriveType=$makeDriveType
+        mntDrive
+      }
+      umdmnt () {
+        mntDriveName=$makeDriveName
+        umntDrive
+      }
+      umdmntForce () {
+        mntDriveName=$makeDriveName
+        umntDriveForce
+      }
     #preferences -
       alias ll='ls -l'
       alias lall='ls -l -a'
       alias lal='ls -l -a'
       alias del='rm -rf'
     #reload -
-      alias bashreset='reset; wait; exec bash; wait; echo "-------------------"; wait; echo "Bash has been reset"; wait; echo "-------------------"'
+      alias bashreset='reset; wait; exec bash'
+      alias updateBash='exec bash'
+      alias updatebash='exec bash'
   #projects -
     BDPDir='/home/alex/dropbox/matthew/projects/keepTalking/programFiles'
     alias projectBDP='echo "atom $BDPDir"; wait; cd $BDPDir'
@@ -226,7 +302,7 @@
               while IFS= read -r name
               do
                 pdftk "$PDFFile" cat $page output "$name.pdf"
-                ((page += 1))
+                ((page+=1))
               done < "$input"
             }
           alias giveKey='makeNameList; wait; echo $1 >> '$curNameList''
