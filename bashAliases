@@ -9,8 +9,6 @@
   #Lines function
   #Chrome functions where chrome --new $site --old $site --newtab
 
-Testing something on git commit
-
 #chrome -
   user=0
   minbox='https://inbox.google.com/u/0/'
@@ -145,54 +143,219 @@ Testing something on git commit
         alias now='date'
         alias curTime='date'
   #bash -
+    alias quitProgram="kill -INT $$"
     numInDir () {
       find "$1"/* -maxdepth 0 -type d | wc -l
     }
     numDrives () {
       numInDir $mntDir
     }
-    checkVar=''
-    setCheck () {
-      checkVar=$1
+    getx () {
+      x=''
+      read -p ": " -n 1 x; while read -n 1 -t .01 y; do x="$x$y"; done
+      echo " "
     }
-    check () {
-      eval checking=\$$checkVar
-      echo "$checking"
+    resetListInfo () {
+      echo "$selected"
+      selected=""
+      tried="0"
     }
-    alias ck=check
+    youSelected () {
+      echo "$1"
+      echo "$selected"
+      echo " :"
+    }
+    #testing -
+      checkVar=''
+      setCheck () {
+        checkVar=$1
+      }
+      check () {
+        eval checking=\$$checkVar
+        echo "$checking"
+      }
+      alias ck=check
+      bashTest () {
+        . /home/alex/customBash/testBash
+      }
+      alias bashtest="bashTest"
     #drives -
       alias drives='sudo fdisk -l'
-      mntDir='/home/alex/mnt'
-      makeDriveDir='sdb1'
-      makeDriveType='vfat'
-      makeDriveName='makeDrive'
+      selected=""
+      mntDir='/media'
       tried='0'
-      getmntInfo () {
-        clear
-        x=''
-        mntDriveType='vfat'
-        mntDriveDir='sdb1'
-        mntDriveName='DefaultDriveName'
-        drives
-        if (("$tried"=='1')); then
-          echo "You did not enter a valid value, please try again"
-        fi
-        read -p "Is the drive \`vfat/sdb1\`? " -n 1 x; while read -n 1 -t .01 y; do x="$x$y"; done
-        echo; wait
-        if [[ "$x" == y* ]] || [[ "$x" == n* ]]; then
-          if [[ "$x" == y* ]]; then
-            read -p "What do you want the drive to be named? " mntDriveName
-          else
-            read -p "What is the drive type? " mntDriveType
-            read -p "What is the drive directory? " mntDriveDir
-            read -p "What do you want the drive to be named? " mntDriveName
-          fi
-        else
-          tried='1'
-          mnt
-        fi
-        tried='0'
+      resetMntInfo () {
+        mntDriveDir=''
+        mntDriveType=''
+        mntDriveName=''
       }
+      resetMntInfo
+      getmntInfoText () {
+        getmntType
+        getmntDir
+        getmntName
+      }
+      getmntType () {
+        while [[ $mntDriveType == "" ]]; do
+          read -p "What is the drive's type? " mntDriveType
+        done
+        if [[ "$mntDriveType" == [["exit" || "quit"]] ]]; then
+          quitProgram
+        fi
+      }
+      getmntDir () {
+        while [[ $mntDriveDir == "" ]]; do
+          read -p "What is the drive's directory? i.e. /dev/[dir] : " mntDriveDir
+        done
+        if [[ "$mntDriveType" == [["exit" || "quit"]] ]]; then
+          quitProgram
+        fi
+      }
+      getmntName () {
+        while [[ $mntDriveName == "" ]]; do
+          read -p "What do you want the drive's name to be? " mntDriveName
+        done
+        if [[ "$mntDriveType" == [["exit" || "quit"]] ]]; then
+          quitProgram
+        fi
+      }
+      mntSelect-c () {
+        echo "Please select an option:"
+        echo "  1. Select"
+        echo "  2. Text input"
+        echo "  3. Profiles"
+        echo "  q. Quit"
+      }
+      mntSelect () {
+        while [[ "$selected" == "" ]]; do
+          mntSelect-c; getx; case "$x" in
+            1)
+              mntSelect-1
+              youSelected "1. Select"
+            ;;
+            2)
+              mntSelect-2
+              youSelected "2. Text input"
+            ;;
+            3)
+              mntSelect-3
+              youSelected "3. Profiles"
+            ;;
+            q|Q)
+              quitProgram
+            ;;
+            *)
+              clear; echo "You didn't choose a valid option. Please try again."
+            ;;
+          esac
+        done
+      }
+      mntSelect-s-c () {
+        resetListInfo
+        echo "Please select a drive type:"
+        echo "  1. vfat"
+        echo "  b. Back"
+        echo "  q. Quit"
+      }
+      mntSelect-s () {
+        while [[ "$selected" == "" ]]; do
+          mntSelect-1-c; getx; case "$x" in
+            1)
+              mntDriveType="vfat"
+              youSelected "1. vfat"
+            ;;
+            b|B)
+              youSelected "back"
+              mntSelect
+            ;;
+            q|Q)
+              quitProgram
+            ;;
+            *)
+              clear; echo "You didn't choose a valid option. Please try again."
+            ;;
+          esac
+        done
+      }
+      mntSelect-2s-c () {
+        resetListInfo
+        echo "Please select a drive directory:"
+        echo "  1. /dev/sdb1"
+        echo "  2. /dev/sdc1"
+        echo "  b. Back"
+        echo "  q. Quit"
+      }
+      mntSelect-2s () {
+        while [[ "$selected" == "" ]]; do
+          mntSelect-2s-c; getx; case "$x" in
+            1)
+              mntDriveDir="sdb1"
+              youSelected "1. dev/sdb1"
+            ;;
+            2)
+              mntDriveDir="sdc1"
+              youSelected "2. /dev/sdc1"
+            ;;
+            b|B)
+              youSelected "back"
+              mntSelect-s
+            ;;
+            q|Q)
+              quitProgram
+            ;;
+            *)
+              clear; echo "You didn't choose a valid option. Please try again."
+            ;;
+          esac
+        done
+      }
+      #getmntInfo () {
+      #  x=''
+      #  mntDriveType=''
+      #  mntDriveDir=''
+      #  clear; drives
+      #  outputDrivePresets
+      #                 tried="1"
+      #  #if [[ "$x" == y* ]] || [[ "$x" == n* ]]; then
+      #  #IF [[ "$x" == [["1" || "2"]]]]
+      #  case "$x" in
+      #    mntDriveName=''
+      #    1)
+      #      mntDriveType="vfat"
+      #      mntDriveDir="sdb1"
+      #    ;;
+      #    2)
+      #      mntDriveType="vfat"
+      #      mntDriveDir="sdc1"
+      #    ;;
+      #    3)
+      #      mntDriveType="vfat"
+      #    ;;
+      #    o|O|0)
+      #      externalPreset=""
+      #      while [[ preset == "" ]]; then
+      #        read -p "Please enter the external preset: " externalPreset
+      #        case "$externalPreset"
+
+      #      case
+      #    ;;
+      #    c|C)
+      #      #DO NOTHING
+      #    ;;
+      #    m|M)
+      #      mntDriveName="makeDrive"
+      #    ;;
+      #    q|Q)
+      #      kill -INT $$
+      #    ;;
+      #    *)
+      #      tried="1"
+      #      clear
+      #      echo "You didn't choose a valid option"
+      #      getmntInfo
+      #    ;;
+      #  esac
+      #}
       mntDrive () { #Needs drive type, name, and direcotry to mount. Can get with getmntInfo.
         sudo mkdir "$mntDir"/"$mntDriveName"
         sudo mount -t "$mntDriveType" /dev/"$mntDriveDir" "$mntDir"/"$mntDriveName"
