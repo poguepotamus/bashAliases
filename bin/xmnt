@@ -3,6 +3,26 @@
   selected=""
   mntDir='/media'
   tried='0'
+  getx () {
+    x=""
+    read -p "$1" -n 1 x; while read -n 1 -t .01 y; do x="$x$y"; done
+    echo " "
+  }
+  getyn () {
+    y/n=""
+    getx "[y/n]: "
+    case $x in
+      y|Y|n|N)
+        y/n=$x
+      ;;
+      q|Q)
+        quitProgram
+      ;;
+      *)
+        echo "You can either say y for yes, or n for no. Please try again. [q] to quit"
+      ;;
+    esac
+  }
   resetMntInfo () {
     mntDriveDir=''
     mntDriveType=''
@@ -18,7 +38,10 @@
     while [[ $mntDriveType == "" ]]; do
       read -p "What is the drive's type? " mntDriveType
     done
-    if [[ "$mntDriveType" == [["exit" || "quit"]] ]]; then
+    if [[ $mntDriveType == ![["vfat" || "test"]] ]]; then
+      echo "[$mtnDriveType] not a recognised drive type, are you sure you want to continue?"
+      getyn
+    elif [[ "$mntDriveType" == [["exit" || "quit"]] ]]; then
       quitProgram
     fi
   }
@@ -46,52 +69,57 @@
     echo "  q. Quit"
   }
   mntSelect () {
-    while [[ "$selected" == "" ]]; do
-      mntSelect-c; getx; case "$x" in
+    while [[ 1 ]]; do
+      mntSelect-c; getx " : "; case "$x" in
         1)
-          mntSelect-1
-          youSelected "1. Select"
+          mntSelect-s "1. Select"
+          break
         ;;
         2)
-          mntSelect-2
-          youSelected "2. Text input"
+          mntSelect-2 "2. Text input"
+          break
         ;;
         3)
-          mntSelect-3
-          youSelected "3. Profiles"
+          mntSelect-3 "3. Profiles"
+          break
         ;;
         q|Q)
           quitProgram
         ;;
         *)
-          clear; echo "You didn't choose a valid option. Please try again."
+          ((tries+=1))
+          clear; echo "You didn't choose a valid option. Please try again."; echo "You have tried $tries times, press [q] to exit"; echo ""
         ;;
       esac
     done
   }
   mntSelect-s-c () {
-    resetListInfo
+    echo "$prevSel"; echo " :"
     echo "Please select a drive type:"
     echo "  1. vfat"
+    echo "  c. Custom"
     echo "  b. Back"
     echo "  q. Quit"
   }
   mntSelect-s () {
-    while [[ "$selected" == "" ]]; do
-      mntSelect-1-c; getx; case "$x" in
+    prevSel="$1"
+    while [[ 1 ]]; do
+      mntSelect-s-c; getx " : "; case "$x" in
         1)
-          mntDriveType="vfat"
-          youSelected "1. vfat"
+          mntSelect-2s 1.  vfat
+        ;;
+        c|C)
+          getmntType
         ;;
         b|B)
-          youSelected "back"
           mntSelect
         ;;
         q|Q)
           quitProgram
         ;;
         *)
-          clear; echo "You didn't choose a valid option. Please try again."
+          ((tries+=1))
+          clear; echo "You didn't choose a valid option. Please try again."; echo "You have tried $tries times, press [q] to exit"; echo ""
         ;;
       esac
     done
@@ -106,17 +134,16 @@
   }
   mntSelect-2s () {
     while [[ "$selected" == "" ]]; do
-      mntSelect-2s-c; getx; case "$x" in
+      mntSelect-2s-c; getx " : "; case "$x" in
         1)
           mntDriveDir="sdb1"
-          youSelected "1. dev/sdb1"
+          getmntName
         ;;
         2)
           mntDriveDir="sdc1"
-          youSelected "2. /dev/sdc1"
+          getmntName
         ;;
         b|B)
-          youSelected "back"
           mntSelect-s
         ;;
         q|Q)
@@ -181,9 +208,8 @@
     cd "$mntDir"/"$mntDriveName"
   }
   mnt () {
-    getmntInfo
-    wait
-    mntDrive
+    clear
+    mntSelect
   }
   getumntInfo () {
     numDrives=$(numInDir "$mntDir")

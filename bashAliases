@@ -1,4 +1,9 @@
 #T2ouV16.0713.1016.shell
+
+#import -
+. /home/alex/customBash/xmnt #xmnt program
+. /home/alex/customBash/makekey #makerSpace Key program
+
 #testing -
   alias FTM='echo This is the First test message; wait; alias test=STM'
   alias STM='echo This is the Second test message; wait; alias test=FTM'
@@ -11,76 +16,26 @@
 
 #chrome -
   user=0
-  minbox='https://inbox.google.com/u/0/'
-  xinbox='https://inbox.google.com/u/1/'
-  gmail='https://mail.google.com/mail/u/2/'
-  ymail='https://mail.yahoo.com/'
-  slack='https://devict.slack.com/messages/'
-  facebook='https://www.facebook.com/'
-  todoist='https://todoist.com/app/'
-  keep='https://keep.google.com/'
-  calendar='https://calendar.google.com/'
-  github='https://github.com/'
-  contacts='https://contacts.google.com/'
-  blackboard='https://blackboard.wichita.edu/'
-  webassign='https://webassign.net/login.html/'
-  mywsu='https://www.wichita.edu/'
-  makedrive='https://drive.google.com/drive/u/2/starred'
-  mcp='https://makeict.greenlightgo.org:444'
-  makeict='https://makeict.org/'
-  WA='https://members.makeict.org/'
-  makewiki='makeict.org/wiki'
-  chess='https://www.chess.com/'
-  music='https://play.google.com/music/listen?u=0'
+  ymail="https://mail.yahoo.com/"
+  slack="https://devict.slack.com/"
+  discord="https://discordapp.com/channels/@me"
+  keep="https://keep.google.com/u/0/"
+  calendar="https://calendar.google.com/calendar/"
+  gmail () {
+    chromium "https://mail.google.com/mail/u/"$1"/#inbox"
+  }
+  alias ymail="chromium "$ymail""
+  alias slack="chromium "$slack""
+  alias discord="chromium "$discord""
+  alias keep="chromium "$keep""
+  alias calendar="chromium "$calendar""
 
-  alias minbox='chromium $minbox'
-  alias newminbox='chromium; wait; minbox'
-  alias xinbox='chromium $xinbox'
-  alias newxinbox='chromium; wait; xinbox'
-  alias gmail='chromium $gmail'
-  alias newgmail='chromium; wait; gmail'
-  alias ymail='chromium $ymail'
-  alias newymail='chromium; wait; ymail'
-  alias slack='chromium $slack'
-  alias newslack='chromium; wait; slack'
-  alias facebook='chromium $facebook'
-  alias newfacebook='chromium; wait; facebook'
-  alias todoist='chromium $todoist'
-  alias newtodoist='chromium; wait; todoist'
-  alias keep='chromium $keep'
-  alias newkeep='chromium; wait; keep'
-  alias calendar='chromium $calendar'
-  alias newcalendar='chromium; wait; calendar'
-  alias github='chromium $github'
-  alias newgithub='chromium; wait; github'
-  alias contacts='chromium $contacts'
-  alias newcontacts='chromium; wait; contacts'
-  alias blackboard='chromium $blackboard'
-  alias newblackboard='chromium; wait; blackboard'
-  alias webassign='chromium $webassign'
-  alias newwebassign='chromium; wait; webassign'
-  alias mywsu='chromium $mywsu'
-  alias newmywsu='chromium; wait; mywsu'
-  alias makedrive='chromium $makedrive'
-  alias makedrive='chromium; wait; makedrive'
-  alias mcp='chromium $mcp'
-  alias newmcp='chromium; wait; mcp'
-  alias makeict='chromium $makeict'
-  alias newmakeict='chromium; wait; makeict'
-  alias WA='chromium $WA'
-  alias newWA='chromium; wait; WA'
-  alias makewiki='chromium $makewiki'
-  alias newmakewiki='chromium; wait; makewiki'
-  alias chess='chromium $chess'
-  alias newchess='chromium; wait; chess'
-  alias music='chromium $music'
-  alias newmusic='chromium; wait; music'
 
-  alias newtab='chromium 'chrome://newtab'; wait'
   alias chrome='chromium'
+  alias newtab='chromium 'chrome://newtab'; wait'
 
     #quickSetups
-      alias communications='minbox; xinbox; gmail; ymail; slack; facebook; keep; calendar'
+      alias communications='gmail 0; gmail 1; gmail 2; ymail; slack; discord; keep; calendar'
   #programs -
     alias pdf='evince'
     alias word='libreoffice --writer'
@@ -143,27 +98,15 @@
         alias now='date'
         alias curTime='date'
   #bash -
-    alias quitProgram="kill -INT $$"
+    quitProgram () {
+      kill -INT $$
+      clear
+    }
     numInDir () {
       find "$1"/* -maxdepth 0 -type d | wc -l
     }
     numDrives () {
       numInDir $mntDir
-    }
-    getx () {
-      x=''
-      read -p ": " -n 1 x; while read -n 1 -t .01 y; do x="$x$y"; done
-      echo " "
-    }
-    resetListInfo () {
-      echo "$selected"
-      selected=""
-      tried="0"
-    }
-    youSelected () {
-      echo "$1"
-      echo "$selected"
-      echo " :"
     }
     #testing -
       checkVar=''
@@ -176,9 +119,6 @@
       }
       alias ck=check
       alias bashtest="bashTest"
-      bashTest () {
-        . /home/alex/customBash/testBash
-      }
     #preferences -
       alias ll='ls -l'
       alias lall='ls -l -a'
@@ -214,37 +154,23 @@
         #makerMondays -
           alias makerMondays='keyInfo; mscMake'
           alias makerMonday='keyInfo; mscMake'
-        #keys -
-          curNameListDir='/home/alex/Dropbox/matthew/makeict/projects/keys/zt'
-          curNameList=''$curNameListDir'/nameList.txt'
-          PDFFile=''$curNameListDir'/EPSON001.PDF'
-          quickFormPDFDir='/media/alex/makeDrive'
-          quickFormPDF=''$quickFormPDFDir'/EPSON001.PDF'
-          alias quickAutoKeyForms=quickAutoKeyFormsFunction
-            quickAutoKeyForms () {
-              PDFFile="$quickFormPDF"
-              autoKeyFormsFunction
-              PDFFile=''$curNameListDir'/EPSON001.PDF'
-            }
-          alias autoKeyForms=autoKeyFormsFunction
-            autoKeyFormsFunction () {
-              page=1
-              input="$curNameList"
-              while IFS= read -r name
-              do
-                pdftk "$PDFFile" cat $page output "$name.pdf"
-                ((page+=1))
-              done < "$input"
-            }
-          alias giveKey='makeNameList; wait; echo $1 >> '$curNameList''
-          alias givekey='makeNameList; wait; echo $1 >> '$curNameList''
-          alias givenKeys='makeNameList; wait; cat '$curNameList''
-          alias editKeys='makeNameList; wait; vim '$curNameList''
-          alias makeNameList='touch '$curNameList''
-        #cashBo -
+        #cashBox -
           alias projectCashBox='atom ~/Dropbox/makeict/cashBox; /home/alex/Downloads/arduino-1.6.9/arduino; cd ~/Dropbox/makeict/cashBox'
       #school -
-        alias school='cd Dropbox/matthew/school/csu2016/calcII; newMyWSU; blackboard; webassign'
+        schoolFolder="/home/alex/Dropbox/matthew/projects/school/cf2016"
+        alias school="cd $schoolFolder"
+        comm () {
+          cd "$schoolFolder"/aCOMM
+        }; alias com="comm"
+        cs () {
+          cd "$schoolFolder"/bCS
+        }
+        psy () {
+          cd "$schoolFolder"/cPSY
+        }
+        ime () {
+          cd "$schoolFolder"/dIME
+        }; alias ee="ime"
       #xpass -
         xpassDir='Dropbox/matthew/security'
         alias projectXpass='cd $xpassDir; atom $xpassDir'

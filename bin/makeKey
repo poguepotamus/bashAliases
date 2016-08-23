@@ -1,0 +1,26 @@
+curNameListDir='/home/alex/Dropbox/matthew/makeict/projects/keys/zt'
+curNameList=''$curNameListDir'/nameList.txt'
+PDFFile=''$curNameListDir'/EPSON001.PDF'
+quickFormPDFDir='/media/alex/makeDrive'
+  quickFormPDF=''$quickFormPDFDir'/EPSON001.PDF'
+alias quickAutoKeyForms=quickAutoKeyFormsFunction
+  quickAutoKeyForms () {
+    PDFFile="$quickFormPDF"
+    autoKeyFormsFunction
+    PDFFile=''$curNameListDir'/EPSON001.PDF'
+  }
+alias autoKeyForms=autoKeyFormsFunction
+  autoKeyFormsFunction () {
+    page=1
+    input="$curNameList"
+    while IFS= read -r name
+    do
+      pdftk "$PDFFile" cat $page output "$name.pdf"
+      ((page+=1))
+    done < "$input"
+  }
+alias giveKey='makeNameList; wait; echo $1 >> '$curNameList''
+alias givekey='makeNameList; wait; echo $1 >> '$curNameList''
+alias givenKeys='makeNameList; wait; cat '$curNameList''
+alias editKeys='makeNameList; wait; vim '$curNameList''
+alias makeNameList='touch '$curNameList''
