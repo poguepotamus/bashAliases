@@ -37,21 +37,25 @@
     echo "This terminal kills all chromium processess. Are you sure you want to continue? [y/n]: "
     getyn
     if [[ "$yn" == "y" ]]; then
-      if [[ "$1" == "push" ]]; then
-        killall chromium
-        cd $stylishFolder
-        git add *
-        git commit -m 'Automatic commit: "$now"'
-        git push
-        cd
-        clear
-      elif [[ "$1" == "pull" ]]; then
-        killall chromium
-        cd $stylishFolder
-        git pull
-      else
-        echo "You must designate push or pull for the stylish xprogram."
-      fi
+      case "$yn" in
+        push)
+          killall chromium
+          cd $stylishFolder
+          git add *
+          git commit -m 'Automatic commit: "$now"'
+          git push
+          cd
+          clear
+        ;;
+        pull)
+          killall chromium
+          cd $stylishFolder
+          git pull
+        ;;
+        *)
+          echo "You must designate push or pull for the stylish xprogram."
+        ;;
+      esac
     fi
   }
 
