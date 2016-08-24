@@ -1,0 +1,36 @@
+# - requirements -
+# ssh
+# WSU server access
+
+
+schoolFolder="/home/alex/Dropbox/matthew/projects/school/cf2016"
+alias school="cd $schoolFolder"
+comm () {
+  cd "$schoolFolder"/aCOMM
+}; alias com="comm"
+cs () {
+  cd "$schoolFolder"/bCS
+}
+psy () {
+  cd "$schoolFolder"/cPSY
+}
+ime () {
+  cd "$schoolFolder"/dIME
+}; alias ee="ime"
+# Handin -
+  handinServer="spock.cs.wichita.edu"
+  schoolFilesys="/opt/homes/stu01/h735f787"
+  alias sshSchool="ssh "$handinServer" -l h735f787"
+  alias connectSchool="sshSchool"
+  xhandin () {
+    if [ -f "$1" ]; then
+      file="$1"
+      asgnFolder=""$schoolFilesys"/poguepotamus/assignments"
+      scp "$file" h735f787@"$handinServer":"$asgnFolder"
+      sshSchool
+      clear
+      echo "testing"
+    else
+      echo "That file doesn't exist, please try again."
+    fi
+  }

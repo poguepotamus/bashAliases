@@ -1,0 +1,6 @@
+# - requirements -
+# evince
+# libreoffice
+
+alias pdf='evince'
+alias word='libreoffice --writer'

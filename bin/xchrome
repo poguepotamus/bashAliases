@@ -1,0 +1,59 @@
+# T2V16.0823.1016.53.shell
+
+# - requirements -
+# chromium
+# logins -
+#   1. matthewpogue606@gmail.com
+#   2. alexgibbs606@gmail.com
+#   3. mpogue@makeict.org
+
+# - rm -
+# Easy access to websites via a termainl alias. This allows for aliases to be binded to specific "panals" i.e. The communications panal opens up emails and other things that I use to communicate to the outside world, and the only thing needed to open it, is typing `communications` into a terminal with chrome open.
+
+# hangouts -
+  alias hangouts='/usr/bin/chromium --profile-directory=Default --app-id=knipolnnllmklapflnccelgolnpehhpl'
+
+# chrome -
+  user=0
+  ymail="https://mail.yahoo.com/"
+  slack="https://devict.slack.com/"
+  discord="https://discordapp.com/channels/@me"
+  keep="https://keep.google.com/u/0/"
+  calendar="https://calendar.google.com/calendar/"
+  gmail () {
+    chromium "https://mail.google.com/mail/u/"$1"/#inbox"
+  }
+  alias ymail="chromium "$ymail""
+  alias slack="chromium "$slack""
+  alias discord="chromium "$discord""
+  alias keep="chromium "$keep""
+  alias calendar="chromium "$calendar""
+  alias chrome='chromium'
+  alias newtab='chromium 'chrome://newtab'; wait'
+  stylishFolder="/home/alex/.config/chromium/Default/IndexedDB/chrome-extension_fjnbnpbmkenffdnngjfgmeleoegfcffe_0.indexeddb.leveldb"
+  stylish () {
+    set -e
+    set -x
+    echo "This terminal kills all chromium processess. Are you sure you want to continue? [y/n]: "
+    getyn
+    if [[ "$yn" == "y" ]]; then
+      if [[ "$1" == "push" ]]; then
+        killall chromium
+        cd $stylishFolder
+        git add *
+        git commit -m 'Automatic commit: "$now"'
+        git push
+        cd
+        clear
+      elif [[ "$1" == "pull" ]]; then
+        killall chromium
+        cd $stylishFolder
+        git pull
+      else
+        echo "You must designate push or pull for the stylish xprogram."
+      fi
+    fi
+  }
+
+  # panal -
+    alias communications='gmail 0; gmail 1; gmail 2; ymail; slack; discord; keep; calendar'

@@ -1,28 +1,12 @@
+# - requirements -
+# mount
+# fdisk
+
 #drives -
+  mntDir='/media'
   alias drives='sudo fdisk -l'
   selected=""
-  mntDir='/media'
   tried='0'
-  getx () {
-    x=""
-    read -p "$1" -n 1 x; while read -n 1 -t .01 y; do x="$x$y"; done
-    echo " "
-  }
-  getyn () {
-    y/n=""
-    getx "[y/n]: "
-    case $x in
-      y|Y|n|N)
-        y/n=$x
-      ;;
-      q|Q)
-        quitProgram
-      ;;
-      *)
-        echo "You can either say y for yes, or n for no. Please try again. [q] to quit"
-      ;;
-    esac
-  }
   resetMntInfo () {
     mntDriveDir=''
     mntDriveType=''
@@ -81,7 +65,7 @@
         ;;
         3)
           mntSelect-3 "3. Profiles"
-          break
+            break
         ;;
         q|Q)
           quitProgram

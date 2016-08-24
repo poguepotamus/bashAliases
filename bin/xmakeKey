@@ -1,3 +1,7 @@
+# T2V16.0823.1016.53.shell
+
+# - requirements -
+
 curNameListDir='/home/alex/Dropbox/matthew/makeict/projects/keys/zt'
 curNameList=''$curNameListDir'/nameList.txt'
 PDFFile=''$curNameListDir'/EPSON001.PDF'

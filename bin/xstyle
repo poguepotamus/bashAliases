@@ -1,0 +1,22 @@
+//This file includes the style sheet for the custom bash files. 
+
+# T2V16.0823.1016.53.shell -
+  T2 = amount of tabs. i.e. T3 would be tabs are three spaces, T4 would be four spaces.
+  V = Version
+  16.08.23.1016.53 = Time i.e. 2016, Aug(08) 32, 10:16:53
+  shell = Language i.e. The shell programming language. (bash)
+
+# - import -
+  This should include a variable to the folder that imported files are from, if they are in a library.
+    i.e.
+      programsFolder="/home/alex/customBash/bin"
+    . "$programsFolder"/xmnt #xmnt program
+    #. "$programsFolder"/
+
+# - requirements -
+  Where the requirements for the xprogram goes. i.e. if the program uses ruby, put ruby here.
+
+# - rm -
+  A small readme if there are any notes for the file
+
+# - code -
