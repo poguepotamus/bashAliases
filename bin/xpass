@@ -1,0 +1,12 @@
+# T2V16.0823.1016.53.shell -
+
+# - import -
+
+# - requirements -
+  # security file in dropbox/matthew
+
+# - readme -
+
+# - xpass -
+  xpassDir='Dropbox/matthew/security'
+  alias projectXpass='cd $xpassDir; atom $xpassDir'

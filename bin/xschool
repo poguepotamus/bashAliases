@@ -1,36 +1,55 @@
+# T2V16.0825.1433.35.shell -
+
+# - import -
+
 # - requirements -
-# ssh
-# WSU server access
+  # ssh
+  # WSU server access
 
+# - readme -
 
-schoolFolder="/home/alex/Dropbox/matthew/projects/school/cf2016"
-alias school="cd $schoolFolder"
-comm () {
-  cd "$schoolFolder"/aCOMM
-}; alias com="comm"
-cs () {
-  cd "$schoolFolder"/bCS
-}
-psy () {
-  cd "$schoolFolder"/cPSY
-}
-ime () {
-  cd "$schoolFolder"/dIME
-}; alias ee="ime"
-# Handin -
-  handinServer="spock.cs.wichita.edu"
-  schoolFilesys="/opt/homes/stu01/h735f787"
-  alias sshSchool="ssh "$handinServer" -l h735f787"
-  alias connectSchool="sshSchool"
-  xhandin () {
-    if [ -f "$1" ]; then
-      file="$1"
-      asgnFolder=""$schoolFilesys"/poguepotamus/assignments"
-      scp "$file" h735f787@"$handinServer":"$asgnFolder"
-      sshSchool
-      clear
-      echo "testing"
-    else
-      echo "That file doesn't exist, please try again."
-    fi
+# - code -
+  serverHome="/opt/homes/stu01/h735f787"
+  schoolFolder="/home/alex/Dropbox/matthew/projects/school/cf2016"
+  alias school="cd $schoolFolder"
+  comm () {
+    cd "$schoolFolder"/aCOMM
+  }; alias com="comm"
+  cs () {
+    cd "$schoolFolder"/bCS
   }
+  psy () {
+    cd "$schoolFolder"/cPSY
+  }
+  ime () {
+    cd "$schoolFolder"/dIME
+  }; alias ee="ime"
+  # Help -
+    schoolHelp () {
+      echo ""
+      echo "school      = Goes to school folder"
+      echo "sshSchool   = Connects to school network through SSH - connectSchool"
+      echo "xhandin     = Transmits \$1 to school server in /poguepotamus/assignments folder and connects to the school network using sshSchool"
+      echo ""
+    }; alias helpSchool=schoolHelp
+  # Handin -
+    handinServer="spock.cs.wichita.edu"
+    alias sshSchool="ssh "$handinServer" -l h735f787"
+    alias connectSchool="sshSchool"
+    xhandin () {
+      if [ -f "$1" ]; then
+        file="$1"
+        asgnFolder=""$serverHome"/poguepotamus/assignments"
+        scp "$file" h735f787@"$handinServer":"$asgnFolder"
+        sshSchool
+        clear
+        echo "testing"
+      else
+        echo "That file doesn't exist, please try again."
+      fi
+    }
+  # SchoolBash -
+    bashSchool () {
+      scp "$programsFolder"/schoolBash/bashAliases h735f787@"$handinServer":"$serverHome"/customBash
+      scp "$programsFolder"/schoolBash/bin/xhandin h735f787@"$handinServer":"$serverHome"/customBash/bin
+    }

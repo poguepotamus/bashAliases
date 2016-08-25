@@ -1,0 +1,32 @@
+# T2V16.0825.1433.35.shell -
+  home="/opt/homes/stu01/h735f787"
+
+# - import -
+  programsFolder=""$home"/customBash/bin"
+. "$programsFolder"/xhandin
+#. "$programsFolder"/
+
+# - requirements -
+  # linux Shell
+  # xhandin
+
+# - readme -
+  # NO SUDO
+
+# - bash -
+  bashAliasesFile="~/customBash/bashAliases"
+  # testing -
+  alias FTM='echo This is the First test message; wait; alias test=STM'
+  alias STM='echo This is the Second test message; wait; alias test=FTM'
+  alias test='FTM'
+  # preferences -
+    alias ll='ls -l'
+    alias lall='ls -l -a'
+    alias lal='ls -l -a'
+    alias del='rm -rf'
+  # reload -
+    alias updateBash='. "$bashAliasesFile"'
+    alias updatebash='. "$bashAliasesFile"'
+    alias bashreset='reset; wait; updateBash'
+
+cd "$home"/poguepotamus/assignments

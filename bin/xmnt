@@ -7,6 +7,12 @@
   alias drives='sudo fdisk -l'
   selected=""
   tried='0'
+  numInDir () {
+    find "$1"/* -maxdepth 0 -type d | wc -l
+  }
+  numDrives () {
+    numInDir $mntDir
+  }
   resetMntInfo () {
     mntDriveDir=''
     mntDriveType=''

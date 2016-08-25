@@ -1,6 +1,13 @@
+# T2V16.0823.1016.53.shell -
+
+# - import -
+
 # - requirements -
 # evince
 # libreoffice
 
+# - readme -
+
+# - code -
 alias pdf='evince'
 alias word='libreoffice --writer'

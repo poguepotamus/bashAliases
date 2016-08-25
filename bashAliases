@@ -1,88 +1,47 @@
-# T2V16.0823.1016.53.shell
+# T2V16.0823.1016.53.shell -
 
 # - import -
   programsFolder="/home/alex/customBash/bin"
 . "$programsFolder"/xchrome # Chrome personalization.
+. "$programsFolder"/xeditBash # Commands to edit the bashAliases file.
 . "$programsFolder"/xinfo # This xprogram includes some functions that I will be using in other functions more for convinince.
 . "$programsFolder"/xmakeKey # MakerSpace Key program.
 . "$programsFolder"/xmiscPrograms # Some more misc program aliases to make them easier to use and remember.
 . "$programsFolder"/xmnt # xmnt program.
-. "$programsFolder"/xnew # A new example file, can be copied to make a new file easily.
 . "$programsFolder"/xpersonal # Some fun commands, and some useful ones. i.e. weather, battery.
 . "$programsFolder"/xschool # School commands, also includes xhandin.
-#. "$programsFolder"/
+# . "$programsFolder"/xnew # A new example file, can be copied to make a new file easily.
+# . "$programsFolder"/xstyle # This file is a text file that summerizes how xprograms are supposed to be written
+# . "$programsFolder"/
 
-# bash_notes -
+# - requirements -
+  # linux Shell
+  # xchrome
+  # xinfo
+  # xmakeKey
+  # xmiscPrograms
+  # xnew
+  # xmnt
+  # xpersonal
+  # xschool
+
+# - readme -
   # Standby alias
   # Lines function
   # Chrome functions where chrome --new $site --old $site --newtab
 
-# bash -
+# - bash -
+  bashAliasesFile="/home/alex/customBash/bashAliases"
   # testing -
   alias FTM='echo This is the First test message; wait; alias test=STM'
   alias STM='echo This is the Second test message; wait; alias test=FTM'
   alias test='FTM'
-
-# remove -
-  # bash -
-    quitProgram () {
-      kill -INT $$
-      clear
-    }
-    numInDir () {
-      find "$1"/* -maxdepth 0 -type d | wc -l
-    }
-    numDrives () {
-      numInDir $mntDir
-    }
-    # testing -
-      checkVar=''
-      setCheck () {
-        checkVar=$1
-      }
-      check () {
-        eval checking=\$$checkVar
-        echo "$checking"
-      }
-      alias ck=check
-      alias bashtest="bashTest"
-    # preferences -
-      alias ll='ls -l'
-      alias lall='ls -l -a'
-      alias lal='ls -l -a'
-      alias del='rm -rf'
-    # reload -
-      alias bashreset='reset; wait; exec bash'
-      alias updateBash='exec bash'
-      alias updatebash='exec bash'
-  # projects -
-    BDPDir='/home/alex/dropbox/matthew/projects/keepTalking/programFiles'
-    alias projectBDP='echo "atom $BDPDir"; wait; cd $BDPDir'
-    # bash -
-      BA=/home/alex/customBash/bashAliases
-      alias bashAliases='atom $BA'
-      alias bashAlias='atom $BA'
-      alias projectAliases='atom $BA'
-      alias projectAlias='atom $BA'
-      alias geanyAliases='geany $BA'
-      alias geanyAlias='geany $BA'
-      alias editAliases='vim $BA'
-      alias editAlias='vim $BA'
-    # csgoCustomConfig-
-      pcsDir='~/customConfig'
-      alias pcs='atom $pcsDir; wait; cd $pcsDir'
-      # website -
-        websiteLocalDir='/home/alex/Dropbox/matthew/projects/website1'
-        websiteHTMLFile=''$websiteLocalDir'/index.html'
-        # exec 'projectWebsite1/projectWebsite1Setup'
-      # makeICT -
-        alias keyInfo='mcp; WA'
-        alias mscMake='makedrive; makeict; wiki'
-        # makerMondays -
-          alias makerMondays='keyInfo; mscMake'
-          alias makerMonday='keyInfo; mscMake'
-        # cashBox -
-          alias projectCashBox='atom ~/Dropbox/makeict/cashBox; /home/alex/Downloads/arduino-1.6.9/arduino; cd ~/Dropbox/makeict/cashBox'
-      # xpass -
-        xpassDir='Dropbox/matthew/security'
-        alias projectXpass='cd $xpassDir; atom $xpassDir'
+  # preferences -
+    alias ll='ls -l'
+    alias lall='ls -l -a'
+    alias lal='ls -l -a'
+    alias del='rm -rf'
+  # reload -
+    alias updateBash='. "$bashAliasesFile"'
+    alias updatebash='. "$bashAliasesFile"'
+    alias bashreset='reset; wait; updateBash'

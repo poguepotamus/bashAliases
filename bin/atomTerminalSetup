@@ -1,6 +1,13 @@
-#T2ouV16.0713.1016.shell
-. /home/alex/customBash/bashAliases
-wait
-cd
-wait
-bashreset
+# T2V16.0823.1016.53.shell -
+
+# - import -
+  . /home/alex/customBash/bashAliases
+
+# - requirements -
+
+# - readme -
+
+# - atom -
+  wait
+  cd
+  wait
