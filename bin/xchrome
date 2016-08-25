@@ -32,8 +32,6 @@
   alias newtab='chromium 'chrome://newtab'; wait'
   stylishFolder="/home/alex/.config/chromium/Default/IndexedDB/chrome-extension_fjnbnpbmkenffdnngjfgmeleoegfcffe_0.indexeddb.leveldb"
   stylish () {
-    set -e
-    set -x
     echo "This terminal kills all chromium processess. Are you sure you want to continue? [y/n]: "
     getyn
     if [[ "$yn" == "y" ]]; then
