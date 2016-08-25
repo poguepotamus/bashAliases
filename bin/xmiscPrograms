@@ -9,5 +9,5 @@
 # - readme -
 
 # - code -
-alias pdf='evince'
-alias word='libreoffice --writer'
+  alias pdf='evince'
+  alias word='libreoffice --writer'
