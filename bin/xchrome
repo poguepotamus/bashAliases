@@ -35,15 +35,15 @@
     echo "This terminal kills all chromium processess. Are you sure you want to continue? [y/n]: "
     getyn
     if [[ "$yn" == "y" ]]; then
-      case "$yn" in
+      case "$1" in
         push)
           killall chromium
           cd $stylishFolder
+          git pull
           git add *
           git commit -m 'Automatic commit: "$now"'
           git push
           cd
-          clear
         ;;
         pull)
           killall chromium
