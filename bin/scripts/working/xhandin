@@ -1,0 +1,46 @@
+#!/bin/bash
+# T2.Lshell
+# requirements -
+
+# import -
+
+# notes -
+
+# code -
+  serverHome="/opt/homes/stu01/h735f787"
+  schoolFolder="/home/alex/Dropbox/matthew/projects/school/cf2016"
+
+  sshSchool () {
+    ssh "$handinServer" -l h735f787
+  }
+
+  xhandinHelp () {
+    echo "script
+      -h|--help
+        Displays this help message
+
+      <default>
+        With no argument, here should be said what happens lol xd
+    "
+  }
+
+  if [[ $# -eq 0 ]]; then # If there are 0 arguments - i.e. only the script name
+    xhandinHelp
+  fi
+  while [[ $# -gt 0 ]]; do # While there are more than 0 arguments
+    key="$1"
+    case $key in
+      -h|--handin)
+
+      ;;
+
+      -h|--help)
+        xhandinHelp
+      ;;
+
+      *)
+
+      ;;
+    esac
+    shift
+  done

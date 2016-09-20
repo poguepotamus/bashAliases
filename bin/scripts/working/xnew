@@ -1,0 +1,80 @@
+#!/bin/bash
+# T=2.L=shell
+# requirements -
+  # xnew$$ file in $programsFolder
+
+# import -
+
+# notes -
+  # Use this xprogram to create a few script file or a new bash file.
+
+# code -
+  programsFolder="/home/alex/customBash"
+  newFileFolder=""$programsFolder"/bin/.templates"
+
+  xnewHelp () {
+    echo "xnew:
+      -b, --bash \$name
+        Creates a new bash file in /home/alex/customBash/bin/working
+        Takes one argument being the name of the new bash file
+
+      -c|--c++|--cpp \$directory
+        Creates a new c++ file at the specified directory
+
+      -s, --script \$name
+        Creates a new script file in /home/alex/customBash/bin/scripts/working
+        Takes one argument being the name of the new bash script
+
+      --startup
+        Starts up a new chromium process. This is useful once the computer has
+        started up, but a chromium process is not running yet.
+
+      -h, --help
+        Displays this help message
+
+      <default>
+        This xprogram doesn't accept no parameters
+    "
+  }
+
+  if [[ $# -eq 0 ]]; then
+    echo "Arguments required"; xnewHelp
+  fi; while [[ $# -gt 0 ]]; do
+    key="$1"
+    case $key in
+      -b|--bash)
+        cp -i $newFileFolder/xnewBash $programsFolder/bin/working/$2
+        shift
+      ;;
+
+      -c|--c++|--cpp)
+        cp -i ""$newFileFolder
+      ;;
+
+      -s|--script)
+        cp -i $newFileFolder/xnewBash $programsFolder/bin/working/$2
+        shift
+      ;;
+
+      --startup)
+        chromium > /dev/null 2>&1 &
+      ;;
+
+      -h|--help)
+        xnewHelp
+      ;;
+
+      *)
+        if [[ $directory == "" ]]; then
+          directory = $2
+          shift
+        else; then
+          xnewHelp
+          echo "
+          You tried to enter two arguments without a tag. Please try with tags, or with only one directory."
+        fi
+      ;;
+    esac
+    shift
+  done
+  cd "$customBashFolder"

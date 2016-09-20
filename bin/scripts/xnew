@@ -1,0 +1,58 @@
+#!/bin/bash
+# T=2.L=shell
+# requirements -
+  # xnew$$ file in $programsFolder
+
+# import -
+
+# notes -
+  # Use this xprogram to create a few script file or a new bash file.
+
+# code -
+  programsFolder="/home/alex/customBash"
+  newFileFolder=""$programsFolder"/bin/.templates"
+
+  xnewHelp () {
+    echo "xnew:
+      -b, --bash \$1
+        Creates a new bash file in /home/alex/customBash/bin/working
+        Takes one argument being the name of the new bash file
+
+      -s, --script \$1
+        Creates a new script file in /home/alex/customBash/bin/scripts/working
+        Takes one argument being the name of the new bash script
+
+      -h, --help
+        Displays this help message
+
+      <default>
+        This xprogram doesn't accept no parameters
+    "
+  }
+
+  if [[ $# -eq 0 ]]; then
+    echo "Arguments required"; xnewHelp
+  fi; while [[ $# -gt 0 ]]; do
+    key="$1"
+    case $key in
+      -b|--bash)
+        cp -i ""$newFileFolder"/xnewBash" ""$programsFolder"/bin/working/"$2""
+        shift
+      ;;
+
+      -s|--script)
+        cp -i ""$newFileFolder"/xnewScript" ""$programsFolder"/bin/scripts/working/"$2""
+        shift
+      ;;
+
+      -h|--help)
+        xnewHelp
+      ;;
+
+      *)
+        xnewHelp
+      ;;
+    esac
+    shift
+  done
+  cd "$customBashFolder"

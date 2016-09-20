@@ -4,10 +4,14 @@
   # All xprograms that are imported below
 
 # import -
-  home="/opt/homes/stu01/h735f787"
-  programsFolder=""$home"/customBash/bin"
-. "$programsFolder"/xhandin
+  customBashFolder="/home/alex/customBash"
+  programsFolder=""$customBashFolder"/bin"
+# . "$programsFolder"/xinfo
 # . "$programsFolder"/
+
+# notes -
+  # workon
+    # Standby
 
 # code -
   # testing -
@@ -20,8 +24,7 @@
     alias lal="lall"
     alias del="echo \"rm -rf\" "$1""
   # reload -
-    bashAliasesFile="~/customBash/bashAliases"
-    alias updateBash=". "$home"/customBash/bashAliases"
+    alias updateBash=". "$bashAliasesFile""
     alias updatebash="updateBash"
     alias bashreset="reset; wait; updateBash"
   # misc programs -

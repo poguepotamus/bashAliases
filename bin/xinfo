@@ -1,18 +1,20 @@
-# T2V16.0823.1016.53.shell -
+# T2.Lshell
+# requirements -
+  # Linux Shell
 
-# - import -
+# import -
 
-# - requirements -
-  # bashAliases
+# notes -
+  # Functions that are useful in other programs, can be imported by using the command below
+# . "$programsFolder"/xinfo
 
-# - rm -
-
-# - info -
+# code -
   getx () {
     x=""
     read -p "$1" -n 1 x; while read -n 1 -t .01 y; do x="$x$y"; done
     echo " "
   }
+
   getyn () {
     yn=""
     getx "[y/n]: "
@@ -28,6 +30,7 @@
       ;;
     esac
   }
+  
   quitProgram () {
     kill -INT $$
     clear

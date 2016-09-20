@@ -1,0 +1,132 @@
+#!/bin/bash
+# T=2.L=shell
+# requirements -
+  # chromium
+  # hangouts extention
+
+# import -
+  programsFolder="/home/alex/customBash/bin"
+. "$programsFolder"/xinfo
+# . "$programsFolder"/xinfo
+
+
+# notes -
+  # Easy acces to websites via a terminal alias. This allows for aliases to be binded to specific "panals" i.e. The communications panal open up emails and other things that I use to communicate with the outside world, and the only thng needed to open it is typing 'xchrome --comms' into a terminal with chrome open.
+
+# code -
+  user=0
+  calendar="https://calendar.google.com/calendar/"
+  discord="https://discordapp.com/channels/@me"
+  keep="https://keep.google.com/u/0/"
+  music="https://play.google.com/music/"
+  slack="https://devict.slack.com/"
+  ymail="https://mail.yahoo.com/"
+
+  gmail () {
+    chromium "https://mail.google.com/mail/u/"$1"/#inbox"
+  }
+  inbox () {
+    chromium "https://inbox.google.com/u/"$1"/#inbox"
+  }
+  chromeHelp () {
+    echo "xchrome:
+      -c, --comms, --communications
+        Launches a preset that includes all E-mail, slack, google keep, and google calendar
+
+      -g, --gmail \$1
+        Launches chrome into gmail with the specified user ID
+
+      -ha, --hangouts, -H
+        Opens up the hangouts chrome application as the actual command is a little long
+
+      -i, --inbox \$1
+        Launches chrome into inbox with the specified user ID
+
+      -m, --music
+        Launches chrome into google play music
+
+      -n, --new
+        Launches a new chrome window
+
+      -s, -ss, --stylishSync
+        Runs the stylish sync program - WARNING: will kill all chromium processess
+
+      -h, --help
+        Displays this help message
+
+      <default>
+        With no argument, xchrome will just open up a new window of chromium
+    "
+  }
+  if [[ $# -eq 0 ]]; then
+    chromium
+  fi; while [[ $# -gt 0 ]]; do
+    key="$1"
+    case $key in
+      -c|--comms|--communications)
+        inbox 0; inbox 1; gmail 2
+        chromium "$ymail"
+        chromium "$slack"
+        chromium "$keep"
+        chromium "$calendar"
+      ;;
+
+      -g|--gmail)
+        gmail "$2"
+        shift
+      ;;
+
+      -ha|--hangouts|-H)
+        chromium --profile-directory=Default --app-id=knipolnnllmklapflnccelgolnpehhpl
+      ;;
+
+      -i|--inbox)
+        inbox "$2"
+        shift
+      ;;
+
+      -m|--music)
+        chromium "$music"
+      ;;
+
+      -n|--new)
+        chromium
+      ;;
+
+      -s|-ss|--stylishSync)
+        stylishFolder="/home/alex/.config/chromium/Default/IndexedDB/chrome-extension_fjnbnpbmkenffdnngjfgmeleoegfcffe_0.indexeddb.leveldb"
+        echo "This terminal kills all chromium processess. Are you sure you want to continue? [y/n]: "
+        getyn; if [[ "$yn" == "y" ]]; then
+          case "$2" in
+            push)
+              killall chromium
+              cd $stylishFolder
+              git pull
+              git add *
+              git commit -m 'Automatic commit: "$now"'
+              git push
+              cd
+            ;;
+            pull)
+              killall chromium
+              cd $stylishFolder
+              git pull
+            ;;
+            *)
+              echo "You must designate push or pull for the stylish xprogram."
+            ;;
+          esac
+        fi
+        shift
+      ;;
+
+      -h|--help)
+        chromeHelp
+      ;;
+
+      *)
+        chromeHelp
+      ;;
+    esac
+    shift
+  done

@@ -1,0 +1,51 @@
+# T2.Lshell
+# requirements -
+  # access to the school servers
+
+# import -
+
+# notes -
+
+# code -
+  # FUNCTIONS
+xhandin () {
+  xhandinHelp () {
+    echo "script
+      -h|--help
+        Displays this help message
+
+      <default>
+        This xprogram requires two arguments:
+          1. Assignment number
+          2. File directory
+    "
+  }
+
+  if [[ $# -eq 0 ]]; then # If there are 0 arguments - i.e. only the script name
+    xhandinHelp
+  fi
+  assignment=""; file=""; ex="0"
+  while [[ $# -gt 0 ]]; do # While there are more than 0 arguments
+    key="$1"
+    case $key in
+      -h|--help)
+        xhandinHelp
+      ;;
+
+      *)
+        if [[ $assignment == "" ]]; then
+          assignment="$1"; shift
+        elif [[ $file == "" ]]; then
+          file="$1"; shift; ex="1"
+        else
+          ex="0"; xhandinHelp; echo "There were too many arguments."
+        fi
+      ;;
+    esac
+    shift
+  done
+  if [[ ex == "1" ]]; then
+    ~cs300d/bin/handin "$assignment" "$file"
+    echo ""; echo "File was handed in with assignment: "$assignment", and file direcotry ["$file"]."; echo ""
+  fi
+}

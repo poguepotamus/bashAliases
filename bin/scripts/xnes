@@ -1,0 +1,49 @@
+ #!/bin/bash
+# T2.Lshell
+# requirements -
+
+# import -
+
+# notes -
+
+# code -
+  xnesHelp () {
+    echo "
+      -g|--game <gameTitle>
+        Runs the title of the game that you inputted
+
+      -h|--help
+        Displays this help message
+
+      <default>
+        With no argument, here should be said what happens lol xd
+    "
+  }
+
+  snesDir="/home/alex/Dropbox/matthew/devices/programs/emulation/roms/snes"
+
+  if [[ $# -eq 0 ]]; then # If there are 0 arguments - i.e. only the script name
+    zsnes
+  fi
+  while [[ $# -gt 0 ]]; do # While there are more than 0 arguments
+    key="$1"
+    case $key in
+      -g|--game)
+        if [[ -e "$snesDir"/"$2"/"$2".sfc ]]; then
+          zsnes "$snesDir"/"$2"/"$2".sfc
+        else
+          echo "That game doesn't exist"
+        fi
+        shift
+      ;;
+
+      -h|--help)
+        xnesHelp
+      ;;
+
+      *)
+        xnesHelp
+      ;;
+    esac
+    shift
+  done
