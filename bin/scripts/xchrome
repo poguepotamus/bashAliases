@@ -31,13 +31,13 @@
   chromeHelp () {
     echo "xchrome:
       -c, --comms, --communications
-        Launches a preset that includes all E-mail, slack, google keep, and google calendar
+        Launches a preset that includes all communications sites
 
       -g, --gmail \$1
         Launches chrome into gmail with the specified user ID
 
       -ha, --hangouts, -H
-        Opens up the hangouts chrome application as the actual command is a little long
+        Opens up the hangouts chrome application
 
       -i, --inbox \$1
         Launches chrome into inbox with the specified user ID
@@ -48,8 +48,14 @@
       -n, --new
         Launches a new chrome window
 
+      --startup, --setup
+        Opens a chromium proccess through a terminal while putting its output
+        somewhere else. This lets the use open it first time, without
+        killing a terminal.
+
       -s, -ss, --stylishSync
-        Runs the stylish sync program - WARNING: will kill all chromium processess
+        Runs the stylish sync program
+         - WARNING: will kill all chromium processess
 
       -h, --help
         Displays this help message
@@ -64,6 +70,7 @@
     key="$1"
     case $key in
       -c|--comms|--communications)
+        chromium time.is
         inbox 0; inbox 1; gmail 2
         chromium "$ymail"
         chromium "$slack"
@@ -91,6 +98,10 @@
 
       -n|--new)
         chromium
+      ;;
+
+      --startup|--setup)
+        chromium > /dev/null 2>&1 &
       ;;
 
       -s|-ss|--stylishSync)

@@ -14,11 +14,15 @@
 
   xnewHelp () {
     echo "xnew:
-      -b, --bash \$1
+      -b, --bash <scriptName>
         Creates a new bash file in /home/alex/customBash/bin/working
         Takes one argument being the name of the new bash file
 
-      -s, --script \$1
+      -c, --c++ <scriptDirectoryAndName>
+        Creates a new c++ file and puts it into the specified directory
+        This argument uses 'cp', if no name is spcified, the name will be "newC"
+
+      -s, --script <scriptName>
         Creates a new script file in /home/alex/customBash/bin/scripts/working
         Takes one argument being the name of the new bash script
 
@@ -36,12 +40,17 @@
     key="$1"
     case $key in
       -b|--bash)
-        cp -i ""$newFileFolder"/xnewBash" ""$programsFolder"/bin/working/"$2""
+        cp -i ""$newFileFolder"/xnewBash" ""$programsFolder"/bin/working/"$2"" # Creates a new file from xnewBash in .templates to the bash working directory
+        shift
+      ;;
+
+      -c|--c++)
+        cp -i ""$newFileFolder"/xnewC" "$2" # Creates a new file from xnewC in .templates to the specified directory
         shift
       ;;
 
       -s|--script)
-        cp -i ""$newFileFolder"/xnewScript" ""$programsFolder"/bin/scripts/working/"$2""
+        cp -i ""$newFileFolder"/xnewScript" ""$programsFolder"/bin/scripts/working/"$2"" # Creates a new file from xnewScripts in .template to the scritps working directoy
         shift
       ;;
 

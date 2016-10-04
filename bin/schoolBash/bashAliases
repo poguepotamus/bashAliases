@@ -5,7 +5,7 @@
 
 # import -
   home="/opt/homes/stu01/h735f787"
-  programsFolder=""$home"/customBash/bin"
+  programsFolder=""$home"/schoolBash"
 . "$programsFolder"/xhandin
 # . "$programsFolder"/
 
@@ -15,9 +15,9 @@
     alias STM="echo This is the Second test message; wait; alias test=FT"
     alias test="FTM"
   # preferences -
-    alias ll="ls -l"
-    alias lall="ls -l -a"
-    alias lal="lall"
+    alias ll="ls -l --color"
+    alias lall="ls -l -a --color"
+    alias lal="lall --color"
     alias del="echo \"rm -rf\" "$1""
   # reload -
     bashAliasesFile="~/customBash/bashAliases"

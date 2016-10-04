@@ -1,0 +1,71 @@
+#!/bin/bash
+# T2.Lshell
+# requirements -
+
+# import -
+
+# notes -
+
+# code -
+  serverHome="/opt/homes/stu01/h735f787"
+  schoolFolder="/home/alex/Dropbox/matthew/projects/school/cf2016"
+  schoolBashFolder="/home/alex/customBash/bin/schoolBash"
+  handinServer="kirk.cs.wichita.edu"
+
+  xschoolHelp () {
+    echo "
+      -c, --connect, -s, --sshSchool
+        Connects to the school servers through ssh (Terminal only)
+
+      -u, --update
+        SCP's a copy of the schoolBash folder from customConfig to the
+        school servers
+
+      -H, --handin <directory>
+        The directory of the file to transfer to the server
+        - kirk.cs.wichita.edu
+
+      -h|--help
+        Displays this help message
+
+      <default>
+        With no argument, the program displays this help message
+    "
+  }
+
+  if [ $# -eq 0 ]; then # If there are 0 arguments - i.e. only the script name
+    xschoolHelp
+  fi
+  while [ $# -gt 0 ]; do # While there are more than 0 arguments
+    key="$1"
+    case "$key" in
+      -c|--connect|-s|--ssh)
+        ssh "$handinServer" -l h735f787
+      ;;
+
+      -u|--update)
+        scp -r "$schoolBashFolder" h735f787@"$handinServer":"$serverHome"
+      ;;
+
+      -H|--handin)
+        arg="$2"
+        if [ "$arg" = "." ] || [ "$arg" = "" ]; then
+          arg=$(pwd)
+          shift
+        elif [ "$argm" = "-c" ]; then
+          arg=$(pwd)
+        fi; if [ -e "$arg" ]; then
+          scp -r "$arg" h735f787@"$handinServer":"$serverHome"/poguepotamus/assignments
+        fi
+      ;;
+
+      -h|--help)
+        xschoolHelp
+      ;;
+
+      *)
+        xschoolHelp
+      ;;
+    esac
+    shift
+  done

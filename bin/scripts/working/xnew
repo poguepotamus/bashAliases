@@ -14,20 +14,17 @@
 
   xnewHelp () {
     echo "xnew:
-      -b, --bash \$name
+      -b, --bash <scriptName>
         Creates a new bash file in /home/alex/customBash/bin/working
         Takes one argument being the name of the new bash file
 
-      -c|--c++|--cpp \$directory
-        Creates a new c++ file at the specified directory
+      -c, --c++ <scriptDirectoryAndName>
+        Creates a new c++ file and puts it into the specified directory
+        If no name is spcified in direcotry, the name will be `newC++`
 
-      -s, --script \$name
+      -s, --script <scriptName>
         Creates a new script file in /home/alex/customBash/bin/scripts/working
         Takes one argument being the name of the new bash script
-
-      --startup
-        Starts up a new chromium process. This is useful once the computer has
-        started up, but a chromium process is not running yet.
 
       -h, --help
         Displays this help message
@@ -43,21 +40,18 @@
     key="$1"
     case $key in
       -b|--bash)
-        cp -i $newFileFolder/xnewBash $programsFolder/bin/working/$2
+        cp -i ""$newFileFolder"/xnewBash" ""$programsFolder"/bin/working/"$2"" # Creates a new file from xnewBash in .templates to the bash working directory
         shift
       ;;
 
-      -c|--c++|--cpp)
-        cp -i ""$newFileFolder
+      -c|--c++)
+        cp -i ""$newFileFolder"/xnewC++" "$2" # Creates a new file from xnewC++ in .templates to the specified directory
+        shift
       ;;
 
       -s|--script)
-        cp -i $newFileFolder/xnewBash $programsFolder/bin/working/$2
+        cp -i ""$newFileFolder"/xnewScript" ""$programsFolder"/bin/scripts/working/"$2"" # Creates a new file from xnewScripts in .template to the scritps working directoy
         shift
-      ;;
-
-      --startup)
-        chromium > /dev/null 2>&1 &
       ;;
 
       -h|--help)
@@ -65,14 +59,7 @@
       ;;
 
       *)
-        if [[ $directory == "" ]]; then
-          directory = $2
-          shift
-        else; then
-          xnewHelp
-          echo "
-          You tried to enter two arguments without a tag. Please try with tags, or with only one directory."
-        fi
+        xnewHelp
       ;;
     esac
     shift
