@@ -70,12 +70,12 @@
     key="$1"
     case $key in
       -c|--comms|--communications)
-        chromium time.is
         inbox 0; inbox 1; gmail 2
         chromium "$ymail"
         chromium "$slack"
         chromium "$keep"
         chromium "$calendar"
+        chromium time.is
       ;;
 
       -g|--gmail)
