@@ -1,5 +1,5 @@
 #!/bin/bash
-# T=2.L=shell
+# T2.Lshell
 # requirements -
 
 # import -
@@ -10,17 +10,6 @@
   # FUNCTIONS
   scriptHelp () {
     echo "
-      -a|--alphabetical
-        This should include a discription of all of the arguements
-
-      -s|--spaces
-        Spaces should be also seperating theses for the sake of the users eyes
-
-      -h|--help
-        Displays this help message
-
-      <default>
-        With no argument, here should be said what happens lol xd
     "
   }
 
@@ -29,14 +18,8 @@
   while [[ $# -gt 0 ]]; do # While there are more than 0 arguments
     key="$1"
     case $key in
-      -a|--alphabetical)
-        echo "These should be sorted alphabetical"
-      ;;
+      -l|--list)
 
-      -s|--spaces)
-        echo "With spaces inbetween so sort eaily"
-        echo "if a   case uses \$2, then it is nessesary to use shift"
-        shift
       ;;
 
       -h|--help)
