@@ -2,7 +2,7 @@
 # T2.Lshell
 # requirements -
   # chromium
-  # hangouts extention
+  # hangouts extension
 
 # import -
   programsFolder="/home/alex/customBash/bin"
@@ -11,25 +11,35 @@
 
 
 # notes -
-  # Easy acces to websites via a terminal alias. This allows for aliases to be binded to specific "panals" i.e. The communications panal open up emails and other things that I use to communicate with the outside world, and the only thng needed to open it is typing 'xchrome --comms' into a terminal with chrome open.
+  # Easy access to websites via a terminal alias. This allows for aliases to be binded to specific "panels" i.e. The communications panel open up emails and other things that I use to communicate with the outside world, and the only thing needed to open it is typing 'xchrome -c' into a terminal with chrome open.
 
 # code -
   user=0
-  calendar="https://calendar.google.com/calendar/"
-  discord="https://discordapp.com/channels/@me"
-  keep="https://keep.google.com/u/0/"
+# Misc
   music="https://play.google.com/music/"
-  slack="https://devict.slack.com/"
-  ymail="https://mail.yahoo.com/"
 
-  gmail () {
-    chromium "https://mail.google.com/mail/u/"$1"/#inbox"
-  }
+# Planning
+  keep="https://keep.google.com/u/0/"
+  calendar="https://calendar.google.com/calendar/"
+  habitica="https://habitica.com"
+  toggl="https://toggl.com/app/timer"
+
+# Communications
   inbox () {
     chromium "https://inbox.google.com/u/"$1"/#inbox"
   }
+  gmail () {
+    chromium "https://mail.google.com/mail/u/"$1"/#inbox"
+  }
+  ymail="https://mail.yahoo.com/"
+  slack="https://devict.slack.com/"
+  discord="https://discordapp.com/channels/@me"
+
   chromeHelp () {
     echo "xchrome:
+      -b, --booga
+        Opens the opening panel for an xchrome setup, this includes both a communications panel and a planning panel
+
       -c, --comms, --communications
         Launches a preset that includes all communications sites
 
@@ -46,36 +56,54 @@
         Launches chrome into google play music
 
       -n, --new
-        Launches a new chrome window
+        Launches a new chrome window. The same as `xchrome`
+
+      -p, --plan, --planning
+        Launches a preset that include all planning sites
 
       --startup, --setup
-        Opens a chromium proccess through a terminal while putting its output
+        Opens a chromium process through a terminal while putting its output
         somewhere else. This lets the use open it first time, without
         killing a terminal.
 
       -s, -ss, --stylishSync
         Runs the stylish sync program
-         - WARNING: will kill all chromium processess
+         - WARNING: will kill all chromium processes
 
       -h, --help
         Displays this help message
 
+      -y, --youtube
+        Launches chrome into youtube
+
       <default>
-        With no argument, xchrome will just open up a new window of chromium
+        With no argument, xchrome will just open up a new window of chromium. The same as `xchrome -n`
     "
   }
   if [[ $# -eq 0 ]]; then
     chromium
+
   fi; while [[ $# -gt 0 ]]; do
     key="$1"
     case $key in
-      -c|--comms|--communications)
+
+      -b|--booga)
+        chromium time.is
         inbox 0; inbox 1; gmail 2
         chromium "$ymail"
         chromium "$slack"
+        chromium
+        chromium time.is
         chromium "$keep"
         chromium "$calendar"
+        chromium "$habitica"
+        chromium "$toggl"
+
+      -c|--comms|--communications)
         chromium time.is
+        inbox 0; inbox 1; gmail 2
+        chromium "$ymail"
+        chromium "$slack"
       ;;
 
       -g|--gmail)
@@ -98,6 +126,14 @@
 
       -n|--new)
         chromium
+      ;;
+
+      -p|--plan|--planning
+        chromium time.is
+        chromium "$keep"
+        chromium "$calendar"
+        chromium "$habitica"
+        chromium "$toggl"
       ;;
 
       --startup|--setup)
@@ -133,6 +169,10 @@
 
       -h|--help)
         chromeHelp
+      ;;
+
+      -y|--youtube)
+        chromium "https://youtube.com"
       ;;
 
       *)

@@ -26,8 +26,7 @@
     zsnes
   fi
   while [[ $# -gt 0 ]]; do # While there are more than 0 arguments
-    key="$1"
-    case $key in
+    case $1 in
       -g|--game)
         if [[ -e "$snesDir"/"$2"/"$2".sfc ]]; then
           zsnes "$snesDir"/"$2"/"$2".sfc

@@ -27,8 +27,7 @@
   if [[ $# -eq 0 ]]; then # If there are 0 arguments - i.e. only the script name
   fi
   while [[ $# -gt 0 ]]; do # While there are more than 0 arguments
-    key="$1"
-    case $key in
+    case $1 in
       -a|--alphabetical)
         echo "These should be sorted alphabetical"
       ;;

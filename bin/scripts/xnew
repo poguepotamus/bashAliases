@@ -51,6 +51,7 @@
 
       -s|--script)
         cp -i ""$newFileFolder"/xnewScript" ""$programsFolder"/bin/scripts/working/"$2"" # Creates a new file from xnewScripts in .template to the scritps working directoy
+        chmod +x ""$programsFolder"/bin/scripts/working/"$2""
         shift
       ;;
 

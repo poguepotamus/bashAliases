@@ -12,7 +12,7 @@
 # code -
   # testing -
     alias FTM="echo This is the First test message; wait; alias test=STM"
-    alias STM="echo This is the Second test message; wait; alias test=FT"
+    alias STM="echo This is the Second test message; wait; alias test=FTM"
     alias test="FTM"
   # preferences -
     alias ll="ls -l --color"
