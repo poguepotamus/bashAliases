@@ -43,6 +43,9 @@
       -c, --comms, --communications
         Launches a preset that includes all communications sites
 
+      --grip
+        Opens straight to http://localhost:6419/ for grips markdown preview
+
       -g, --gmail \$1
         Launches chrome into gmail with the specified user ID
 
@@ -92,18 +95,25 @@
         inbox 0; inbox 1; gmail 2
         chromium "$ymail"
         chromium "$slack"
+        chromium "$discord"
         chromium
         chromium time.is
         chromium "$keep"
         chromium "$calendar"
         chromium "$habitica"
         chromium "$toggl"
+      ;;
 
       -c|--comms|--communications)
         chromium time.is
         inbox 0; inbox 1; gmail 2
         chromium "$ymail"
         chromium "$slack"
+        chromium "$discord"
+      ;;
+
+      --grip)
+        chromium "http://localhost:6419/"
       ;;
 
       -g|--gmail)
@@ -128,7 +138,7 @@
         chromium
       ;;
 
-      -p|--plan|--planning
+      -p|--plan|--planning)
         chromium time.is
         chromium "$keep"
         chromium "$calendar"
