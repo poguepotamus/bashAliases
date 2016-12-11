@@ -26,6 +26,7 @@
   # reload -
     alias updateBash=". "$bashAliasesFile""
     alias updatebash="updateBash"
+    alias update="updateBash"
     alias bashreset="reset; wait; updateBash"
   # misc programs -
     alias pdf="evince"
