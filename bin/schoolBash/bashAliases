@@ -24,7 +24,3 @@
     alias updateBash=". "$home"/customBash/bashAliases"
     alias updatebash="updateBash"
     alias bashreset="reset; wait; updateBash"
-  # misc programs -
-    alias pdf="evince"
-    alias work="libreoffice --writer"
-    alias chrome="chromium"
