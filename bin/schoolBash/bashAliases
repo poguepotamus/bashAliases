@@ -9,6 +9,12 @@
 . "$programsFolder"/xhandin
 # . "$programsFolder"/
 
+# updateSchoolBash -
+cwd=$(pwd)
+  cd /opt/homes/stu01/h735f787/schoolBash
+  git pull origin master
+cd "$cwd"
+
 # code -
   # testing -
     alias FTM="echo This is the First test message; wait; alias test=STM"
@@ -21,7 +27,12 @@
     alias del="echo \"rm -rf\" "$1""
   # reload -
     bashAliasesFile="~/customBash/bashAliases"
-    alias updateBash=". "$home"/customBash/bashAliases"
+    alias updateBash=". '$home'/customBash/bashAliases"
     alias updatebash="updateBash"
     alias update="updateBash"
     alias bashreset="reset; wait; updateBash"
+
+
+
+
+

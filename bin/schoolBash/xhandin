@@ -15,37 +15,32 @@ xhandin () {
         Displays this help message
 
       <default>
-        Th  is xprogram requires two arguments:
-          1. Assignment number
-          2. File directory
+        This xprogram finds a .handin file and executes it.
+        File needs to have the following syntax:
+          Bash
+          ~/[class]/bin/handin [all file names (including makefile)]
     "
   }
 
   if [ $# -eq 0 ]; then # If there are 0 arguments - i.e. only the script name
-    xhandinHelp
+    if [ -f handin]; then
+      . handin
+    else
+      xhandinHelp
+    fi
   fi
-  assignment=""; file=""; ex="0"
+
   while [ $# -gt 0 ]; do # While there are more than 0 arguments
-    key="$1"
+  key="$1"
     case $key in
       -h|--help)
         xhandinHelp
       ;;
 
       *)
-        if [ "$assignment" = "" ]; then
-          assignment="$1"; shift
-        elif [ "$file" = "" ]; then
-          file="$1"; shift; ex="1"
-        else
-          ex="0"; xhandinHelp; echo "There were too many arguments."
-        fi
+        xhandinHelp
       ;;
     esac
     shift
   done
-  if [ "$ex" = "1" ]; then
-    ~cs300d/bin/handin "$assignment" "$file"
-    echo ""; echo "File was handed in with assignment: "$assignment", and file direcotry ["$file"]."; echo ""
-  fi
 }
