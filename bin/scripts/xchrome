@@ -22,7 +22,6 @@
   keep="https://keep.google.com/u/0/"
   calendar="https://calendar.google.com/calendar/"
   habitica="https://habitica.com"
-  toggl="https://toggl.com/app/timer"
 
 # Communications
   inbox () {
@@ -101,7 +100,6 @@
         chromium "$keep"
         chromium "$calendar"
         chromium "$habitica"
-        chromium "$toggl"
       ;;
 
       -c|--comms|--communications)
