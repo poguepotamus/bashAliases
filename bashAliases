@@ -1,17 +1,14 @@
 # T2.Lshell
 # requirements -
-  # Linux Shell
+  # Linux Kernel
   # All xprograms that are imported below
 
 # import -
-  customBashFolder="/home/alex/customBash"
-  bashAliasesFiles="$customBashFolder"/bashAliases
-  programsFolder=""$customBashFolder"/bin"
-# . "$programsFolder"/xinfo
-# . "$programsFolder"/
+bin="/home/alex/customBash/bin"
+# . "$bin"/
 
 # notes -
-  # workon
+  # work-on
     # Standby
 
 # code -
