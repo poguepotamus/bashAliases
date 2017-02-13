@@ -24,6 +24,11 @@
     alias lall="ls -l -a"
     alias lal="lall"
     alias del="echo \"rm -rf\" "$1""
+  # git -
+    alias gp='git push'
+    alias ga='git add'
+    alias gm='git commit -m'
+    alias gs='git status'
   # reload -
     alias updateBash=". /home/alex/customBash/bashAliases"
     alias updatebash="updateBash"
