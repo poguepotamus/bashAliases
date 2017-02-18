@@ -37,4 +37,3 @@ bin="/home/alex/customBash/bin"
     alias chrome="chromium"
   # misc -
     alias ipconfig="dig +short myip.opendns.com @resolver1.opendns.com"
-    cd
