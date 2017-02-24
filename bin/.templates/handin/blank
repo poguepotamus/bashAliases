@@ -4,10 +4,22 @@
     Notes:
 *******************************************************************************/
 
-// %%%%% ifndef %%%%%
+// %%%%% ifndef %%%%% Remove if not header file
     #ifndef <fileName>
     #define <fileName>
 
 // %%%%% include %%%%%
 
+<<<<<<< Updated upstream
 #endif
+=======
+// %%%%% preprocessor %%%%%
+    #define DEBUG false
+    #define debugVar(name, var) if(DEBUG) cout << "===DEBUG=== " << name << " = " << var << endl;
+    #define debugSay(msg) if(DEBUG) cout "===DEBUG=== " << msg;
+
+// %%%%% code %%%%%
+
+// %%%%% endifndef %%%%% Remove if not header file
+#endif
+>>>>>>> Stashed changes

@@ -1,0 +1,81 @@
+#!/bin/bash
+# T2.Lshell
+# requirements -
+  # Bash
+
+# import -
+
+# notes -
+
+# code -
+  # FUNCTIONS
+  handinHelp () {
+    echo "
+    xhandin:
+      -n|--new <projectName> <assignment>
+        This creates a new file with the project name as its folder name and \".\$assignment\" as the handin file name.
+
+      -h|--help
+        This outputs this help message.
+
+      <default>
+        Will look for a .handin file and execute it if it exists.
+    "
+  }
+
+  makeBlank () {
+    echo "/*******************************************************************************" >> blank
+    echo "    File Name: [filename]">> blank
+    echo "    Author: Matthew Pogue">> blank
+    echo "    Student ID: H735F787">> blank
+    echo "    Assignment Number: ">> blank
+    cat ~/customBash/bin/.templates/handin/blank >> blank
+  } 
+
+  makeMake () {
+    echo "$1:" >> makefile
+    echo "g++ -Wall -g -o assignment$2.test" >> makefile
+  }
+
+  # CASE
+  if [[ $# -eq 0 ]]; then # If there are 0 arguments - i.e. only the script name
+  fi
+  while [[ $# -gt 0 ]]; do # While there are more than 0 arguments
+    case $1 in
+      -n|--new)
+        # If there are two arguments
+        if [ $# -eq 2 ]; then
+          nums='^[0-9]+$'
+          # Checking to see if second argument is an int
+          if ! [[ $2 =~ $nums ]] ; then
+            handinHelp
+            echo "Error: <assignment> needs to be an integer representing an assignment. (second argument)" >&2; exit 1
+          # If there is an integer as the second argument
+          else
+            mkdir "'$1'"; cd "'$1'"
+            # Copies all the files to the current directory
+            makeBlank; makeMake
+            cp ~/customBash/bin/scripts/handin/client.handin .handin
+            # Adds the assignment line to the bottom of the handin file
+            echo "#Assignment '$2'" >> .handin
+            # Moves back to the original directory
+            cd ..
+          fi
+        fi
+      ;;
+      -h|--help)
+        handinHelp
+      ;;
+      *)
+        # If a file with the name `.handin` exists
+        if [ -e .handin ]; then
+          # Then execute that file
+          . .handin
+        else
+          handinHelp
+          echo "Error: No handin file was found" >&2; exit 1
+        fi
+      ;;
+    esac
+    shift
+  done

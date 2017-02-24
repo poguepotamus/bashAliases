@@ -1,0 +1,19 @@
+#!/bin/bash
+# T2.Lshell
+# requirements -
+  # Bash
+
+# import -
+
+# notes -
+
+# code -
+  # Find line with "Assignment Number: " in it, then return it"
+  assignmentLine="$(grep 'Assignment Number: ' *.cpp)"
+  # Return the last character in the string
+  assignment="${assignmentLine: -1}"
+  scp *.cpp *.hpp *.h makefile ~/customBash/bin/scripts/handin/server.handin h735f787@cs.wichita.edu:~/cs-411/assignment"$assignment"/
+  # Pushes to handin branch
+  git branch handin; git add *; git commit -m "Automatic Commit"; git push origin handin
+  # Connects to school servers
+  ssh kirk.cs.wichita.edu -l h735f787

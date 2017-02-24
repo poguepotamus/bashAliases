@@ -1,0 +1,13 @@
+# T2.Lshell
+# requirements -
+
+# import -
+
+# notes -
+
+# code -
+  # Find line with "Assignment Number: " in it, then return it"
+  assignmentLine="$(grep 'Assignment Number: ' *.cpp)"
+  # Return the last character in the string
+  assignment="${assignmentLine: -1}"
+  ~cs411/bin/handin -y "$assignment" *.cpp *.hpp *.h makefile 
