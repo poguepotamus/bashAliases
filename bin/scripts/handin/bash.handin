@@ -9,26 +9,25 @@
 
 # code -
   # FUNCTIONS
-handinHelp () {
-  echo "
-  xhandin:
-    -n|--new <projectName> <assignment>
-      This creates a new file with the project name as its folder name and \".\$assignment\" as the handin file name.
-
-    -h|--help
-      This outputs this help message.
-
-    <default>
-      Will look for a .handin file and execute it if it exists.
-  "
+handinHelp ()
+{
+  echo "xhandin:"
+  echo "  -n|--new <projectName> <assignment>"
+  echo "    This creates a new file with the project name as its folder name."
+  echo
+  echo "  -h|--help"
+  echo "    This outputs this help message."
+  echo
+  echo "  <default>"
+  echo "    Will look for a .handin file and execute it if it exists."
 }
 
 makeBlank () {
   echo "/*******************************************************************************" >> blank
-  echo "    File Name: [filename]">> blank
-  echo "    Author: Matthew Pogue">> blank
-  echo "    Student ID: H735F787">> blank
-  echo "    Assignment Number: ">> blank
+  echo "    File Name: [filename]" >> blank
+  echo "    Author: Matthew Pogue" >> blank
+  echo "    Student ID: H735F787" >> blank
+  echo "    Assignment Number: " >> blank
   cat ~/customBash/bin/.templates/handin/blank >> blank
 } 
 
@@ -39,6 +38,14 @@ makeMake () {
 
 # CASE
 if [[ $# -eq 0 ]]; then # If there are 0 arguments - i.e. only the script name
+  # If a file with the name `.handin` exists
+  if [ -e .handin ]; then
+    # Then execute that file
+    . .handin
+  else
+    handinHelp
+    echo "Error: No handin file was found" >&2; exit 1
+  fi
 fi
 while [[ $# -gt 0 ]]; do # While there are more than 0 arguments
   case $1 in
