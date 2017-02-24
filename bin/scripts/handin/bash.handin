@@ -44,7 +44,7 @@ if [[ $# -eq 0 ]]; then # If there are 0 arguments - i.e. only the script name
     . .handin
   else
     handinHelp
-    echo "Error: No handin file was found" >&2; exit 1
+    echo "Error: No handin file was found"
   fi
 fi
 while [[ $# -gt 0 ]]; do # While there are more than 0 arguments
@@ -56,7 +56,7 @@ while [[ $# -gt 0 ]]; do # While there are more than 0 arguments
         # Checking to see if second argument is an int
         if ! [[ $2 =~ $nums ]] ; then
           handinHelp
-          echo "Error: <assignment> needs to be an integer representing an assignment. (second argument)" >&2; exit 1
+          echo "Error: <assignment> needs to be an integer representing an assignment. (second argument)"
         # If there is an integer as the second argument
         else
           mkdir "'$1'"; cd "'$1'"
@@ -80,7 +80,7 @@ while [[ $# -gt 0 ]]; do # While there are more than 0 arguments
         . .handin
       else
         handinHelp
-        echo "Error: No handin file was found" >&2; exit 1
+        echo "Error: No handin file was found"
       fi
     ;;
   esac
