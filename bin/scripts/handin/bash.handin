@@ -44,12 +44,21 @@ if [[ $# -eq 0 ]]; then # If there are 0 arguments - i.e. only the script name
     . .handin
   else
     handinHelp
+<<<<<<< HEAD
     echo "Error: No handin file was found"
+=======
+    echo "Error: No handin file was found - first"
+>>>>>>> dbdd4dcb6c6ee1c7f9d4dbb4e29e3bb16828e33a
   fi
 fi
 while [[ $# -gt 0 ]]; do # While there are more than 0 arguments
   case $1 in
+<<<<<<< HEAD
     -n|--new)
+=======
+    
+    -n | --new)
+>>>>>>> dbdd4dcb6c6ee1c7f9d4dbb4e29e3bb16828e33a
       # If there are two arguments
       if [ $# -eq 2 ]; then
         nums='^[0-9]+$'
@@ -69,10 +78,19 @@ while [[ $# -gt 0 ]]; do # While there are more than 0 arguments
           cd ..
         fi
       fi
+<<<<<<< HEAD
     ;;
     -h|--help)
       handinHelp
     ;;
+=======
+      ;;
+
+    -h | --help)
+      handinHelp
+      ;;
+
+>>>>>>> dbdd4dcb6c6ee1c7f9d4dbb4e29e3bb16828e33a
     *)
       # If a file with the name `.handin` exists
       if [ -e .handin ]; then
@@ -80,9 +98,15 @@ while [[ $# -gt 0 ]]; do # While there are more than 0 arguments
         . .handin
       else
         handinHelp
+<<<<<<< HEAD
         echo "Error: No handin file was found"
       fi
     ;;
+=======
+        echo "Error: No handin file was found - second"
+      fi
+      ;;
+>>>>>>> dbdd4dcb6c6ee1c7f9d4dbb4e29e3bb16828e33a
   esac
   shift
 done
