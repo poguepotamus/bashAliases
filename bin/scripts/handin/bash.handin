@@ -22,7 +22,8 @@ handinHelp ()
   echo "    Will look for a .handin file and execute it if it exists."
 }
 
-makeBlank () {
+makeBlank ()
+{
   echo "/*******************************************************************************" >> blank
   echo "    File Name: [filename]" >> blank
   echo "    Author: Matthew Pogue" >> blank
@@ -31,7 +32,8 @@ makeBlank () {
   cat ~/customBash/bin/.templates/handin/blank >> blank
 } 
 
-makeMake () {
+makeMake ()
+{
   echo "$1:" >> makefile
   echo "g++ -Wall -g -o assignment$2.test" >> makefile
 }
@@ -50,7 +52,8 @@ fi
 while [[ $# -gt 0 ]]; do # While there are more than 0 arguments
   case $1 in
     
-    -n | --new)
+    "-n"|'--new')
+      shift
       # If there are two arguments
       if [ $# -eq 2 ]; then
         nums='^[0-9]+$'
@@ -60,14 +63,15 @@ while [[ $# -gt 0 ]]; do # While there are more than 0 arguments
           echo "Error: <assignment> needs to be an integer representing an assignment. (second argument)"
         # If there is an integer as the second argument
         else
-          mkdir "'$1'"; cd "'$1'"
+          mkdir "$1"; cd "$1"
           # Copies all the files to the current directory
-          makeBlank "$2"; makeMake
+          makeBlank "$2"; makeMake "$1"
           cp ~/customBash/bin/scripts/handin/client.handin .handin
           # Moves back to the original directory
           cd ..
         fi
       fi
+      shift; shift
       ;;
 
     -h | --help)
