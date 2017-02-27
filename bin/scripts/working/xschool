@@ -8,8 +8,7 @@
 
 # code -
   serverHome="/opt/homes/stu01/h735f787"
-  schoolFolder="/home/alex/Dropbox/matthew/projects/school/cf2016"
-  schoolBashFolder="/home/alex/customBash/bin/schoolBash"
+  schoolBashFolder="~/customBash/bin/schoolBash"
   handinServer="kirk.cs.wichita.edu"
 
   xschoolHelp () {
@@ -48,15 +47,7 @@
       ;;
 
       -H|--handin)
-        arg="$2"
-        if [ "$arg" = "." ] || [ "$arg" = "" ]; then
-          arg=$(pwd)
-          shift
-        elif [ "$argm" = "-c" ]; then
-          arg=$(pwd)
-        fi; if [ -e "$arg" ]; then
-          scp -r "$arg" h735f787@"$handinServer":"$serverHome"/poguepotamus/assignments
-        fi
+        . ~/customBash/bin/scripts/handin/bash.handin
       ;;
 
       -h|--help)
