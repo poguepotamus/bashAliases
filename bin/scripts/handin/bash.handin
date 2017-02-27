@@ -64,11 +64,13 @@ while [[ $# -gt 0 ]]; do # While there are more than 0 arguments
         # If there is an integer as the second argument
         else
           mkdir "$1"; cd "$1"
+          cp ~/customBash/bin/.templates/handin/project/* .
+          cd "src"
           # Copies all the files to the current directory
-          makeBlank "$2"; makeMake "$1"
+          makeBlank "$2"; makeMake "$1" "$2"
           cp ~/customBash/bin/scripts/handin/client.handin .handin
           # Moves back to the original directory
-          cd ..
+          cd ../..
         fi
       fi
       shift; shift
