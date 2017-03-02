@@ -21,6 +21,7 @@ bin="/home/alex/customBash/bin"
     alias lall="ls -l -a"
     alias lal="lall"
     alias del="echo \"rm -rf\" "$1""
+    alias now="date +%y.%m.%d"
   # git -
     alias gps='git push'
     alias gpl='git pull'
