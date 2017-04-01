@@ -12,10 +12,6 @@ bin="/home/alex/customBash/bin"
     # Standby
 
 # code -
-  # testing -
-    alias FTM="echo This is the First test message; wait; alias test=STM"
-    alias STM="echo This is the Second test message; wait; alias test=FT"
-    alias test="FTM"
   # preferences -
     alias ll="ls -l"
     alias lall="ls -l -a"
@@ -41,4 +37,5 @@ bin="/home/alex/customBash/bin"
   # misc -
     alias ipconfig="dig +short myip.opendns.com @resolver1.opendns.com"
     alias xclear=". ~/customBash/bin/scripts/xlines"
+    alias addPath="PATH=$PATH:~/customBash/bin/scripts"
 
