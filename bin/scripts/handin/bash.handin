@@ -11,6 +11,7 @@
   # FUNCTIONS
 handinHelp ()
 {
+  echo ""
   echo "xhandin:"
   echo "  -n|--new <projectName> <assignment>"
   echo "    This creates a new file with the project name as its folder name."
@@ -20,6 +21,7 @@ handinHelp ()
   echo
   echo "  <default>"
   echo "    Will look for a .handin file and execute it if it exists."
+  echo ""
 }
 
 makeBlank ()
@@ -51,7 +53,6 @@ if [[ $# -eq 0 ]]; then # If there are 0 arguments - i.e. only the script name
 fi
 while [[ $# -gt 0 ]]; do # While there are more than 0 arguments
   case $1 in
-    
     "-n"|'--new')
       shift
       # If there are two arguments
@@ -81,14 +82,7 @@ while [[ $# -gt 0 ]]; do # While there are more than 0 arguments
       ;;
 
     *)
-      # If a file with the name `.handin` exists
-      if [ -e .handin ]; then
-        # Then execute that file
-        . .handin
-      else
-        handinHelp
-        echo "Error: No handin file was found - second"
-      fi
+      handinHelp
       ;;
   esac
   shift
