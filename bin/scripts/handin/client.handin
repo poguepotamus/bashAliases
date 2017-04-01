@@ -1,6 +1,6 @@
 #!/bin/bash
   assignmentLine="$(grep 'Assignment Number: ' blank)"
   assignment="${assignmentLine: -2}"
-  scp *.cpp *.hpp *.h makefile ~/customBash/bin/scripts/handin/server.handin h h735f787@spock.cs.wichita.edu:/opt/homes/stu01/h735f787/cs-411/assignment"$assignment"
+  scp *.cpp *.hpp *.h makefile ~/customBash/bin/scripts/handin/server.handin h735f787@spock.cs.wichita.edu:/opt/homes/stu01/h735f787/cs-411/assignment"$assignment"
   git branch handin; git add * .* -f; git commit -m 'Automatic Commit'; git push --all origin
   ssh kirk.cs.wichita.edu -l h735f787
