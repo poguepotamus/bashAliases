@@ -7,7 +7,7 @@
 
 # code -
   # Find line with "Assignment Number: " in it, then return it"
-  assignmentLine="$(grep 'Assignment Number: ' *.cpp)"
+  assignmentLine="$(grep 'Assignment Number: ' blank)"
   # Return the last character in the string
-  assignment="${assignmentLine: -1}"
+  assignment="${assignmentLine: -2}"
   ~cs411/bin/handin -y "$assignment" *.cpp *.hpp *.h makefile 
