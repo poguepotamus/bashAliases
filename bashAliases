@@ -26,7 +26,7 @@ bin="/home/alex/customBash/bin"
     alias gm='git commit -m'
     alias gs='git status'
   # reload -
-    alias updateBash=". /home/alex/customBash/bashAliases"
+    alias updateBash=". ~/customBash/bashAliases"
     alias updatebash="updateBash"
     alias update="updateBash"
     alias bashreset="reset; wait; updateBash"
