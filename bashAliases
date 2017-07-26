@@ -13,7 +13,7 @@ bin="/home/alex/customBash/bin"
 
 # code -
   # preferences -
-    alias ll="ls -l"
+    alias ll="ls -lF"
     alias lall="ls -l -a"
     alias lal="lall"
     alias del="echo \"rm -rf\" "$1""
