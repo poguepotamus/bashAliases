@@ -25,7 +25,7 @@ bin="/home/alex/customBash/bin"
     alias gr='git rm'
     alias gm='git commit -m'
     alias gs='git status'
-    alias gl='git log --oneline --decorate --graph --all'
+    alias glog='git log --oneline --decorate --graph --all'
   # reload -
     alias updateBash=". ~/customBash/bashAliases"
     alias updatebash="updateBash"
