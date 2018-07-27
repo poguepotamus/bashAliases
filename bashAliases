@@ -37,7 +37,6 @@ bin="/home/alex/customBash/bin"
   # misc programs -
     alias pdf="evince"
     alias work="libreoffice --writer"
-    alias chrome="chromium"
   # misc -
     alias ipconfig="dig +short myip.opendns.com @resolver1.opendns.com"
     alias xclear=". ~/customBash/bin/scripts/xlines"
