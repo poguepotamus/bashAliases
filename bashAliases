@@ -1,4 +1,4 @@
-# T2.Lshell
+#!/usr/bin/bash
 # requirements -
   # Linux Kernel
   # All xprograms that are imported below
