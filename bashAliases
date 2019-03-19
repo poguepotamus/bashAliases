@@ -18,12 +18,6 @@ bin="/home/alex/customBash/bin"
     alias lal="lall"
     alias del="echo \"rm -rf\" "$1""
   # git -
-  #  alias gps='git push'
-  #  alias gpl='git pull'
-  #  alias ga='git add'
-  #  alias gr='git rm'
-  #  alias gm='git commit -m'
-  #  alias gs='git status'
     alias glog='git log --oneline --decorate --graph --all'
   # python -
     alias howWheel="echo 'python setup.py sdist bdist_wheel'"
