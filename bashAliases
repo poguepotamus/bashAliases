@@ -4,8 +4,8 @@
   # All xprograms that are imported below
 
 # import -
-bin="/home/alex/customBash/bin"
-# . "$bin"/
+bin="/home/matthew/.customBash/bin"
+. $bin"/xdate"
 
 # notes -
   # work-on
