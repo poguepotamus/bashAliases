@@ -4,8 +4,8 @@
   # All xprograms that are imported below
 
 # import -
-bin="/home/matthew/.customBash/bin"
-. $bin"/xdate"
+bin="$HOME/.customBash/bin"
+. $bin"/xDate"
 
 # notes -
   # work-on
@@ -38,3 +38,7 @@ bin="/home/matthew/.customBash/bin"
     alias pingSteam="echo 155.133.234.{0-25}"
     alias tldr="python -m tldr --color"
     alias less="less -R"
+    alias csgoDir='/c/Program Files (x86)/Steam/steamapps/common/Counter-Strike Global Offensive/csgo/cfg/xcsConfig'
+
+
+    alias nsd="cmd 'shutdown /s /t 2700'"
