@@ -1,7 +1,4 @@
 #!/usr/bin/bash
-# requirements -
-  # Linux Kernel
-  # All xprograms that are imported below
 
 # import -
 bin="/home/matthew/.customBash/bin"
@@ -22,19 +19,3 @@ bin="/home/matthew/.customBash/bin"
   # python -
     alias howWheel="echo 'python setup.py sdist bdist_wheel'"
     alias piping="echo 'pip freeze | xargs pip uninstall -y'"
-  # reload -
-    alias updateBash=". ~/customBash/bashAliases"
-    alias updatebash="updateBash"
-    alias update="updateBash"
-    alias bashreset="reset; wait; updateBash"
-  # misc programs -
-    alias pdf="evince"
-    alias work="libreoffice --writer"
-  # misc -
-    alias ipconfig="dig +short myip.opendns.com @resolver1.opendns.com"
-    alias xclear=". ~/customBash/bin/scripts/xlines"
-    alias addPath="PATH=$PATH:~/customBash/bin/scripts"
-  # steam -
-    alias pingSteam="echo 155.133.234.{0-25}"
-    alias tldr="python -m tldr --color"
-    alias less="less -R"
