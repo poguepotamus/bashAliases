@@ -1,0 +1,9 @@
+Host athena
+  HostName 146.71.78.130
+  Port 6220
+  User matthew
+
+Host kate
+  HostName kate.matthewpogue.com
+  Port 6220
+  User Matthew
