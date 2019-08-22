@@ -28,5 +28,5 @@ PATH=$PATH:$bin
 # hostrc -
   # Finding hostname
   [ -z $HOSTNAME ] || HOST=$HOSTNAME
-  hostrc="$configPath/$HOST"
+  hostrc="$configPath/hosts/$HOST"
   [ -f $hostrc ] && $hostrc
