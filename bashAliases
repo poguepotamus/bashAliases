@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# constants -
+CONFIG_PATH="/home/matthew/.customBash"
+
 # preferences -
   alias ll="ls -lF --color"
   alias lall="ls -alF --color"
@@ -14,22 +17,14 @@
 # output -
 warning() { >&2 echo -e "\e[33mWARNING\e[0m: \e[90mbashAliases\e[0m: $1"; }
 
-# CLAs -
-if [ -z "$1" ]; then
-  configPath="~/.customBash"
-  warning "Please add the config path to your bashAliases file execution in '~/.bashrc'"
-else
-  configPath="$1"
-fi
-
 # files -
-. "$configPath/bin/xdate"
+. "$CONFIG_PATH/bin/xdate"
 
 # environment -
-PATH="$PATH:$configPath/bin"
+PATH="$PATH:$CONFIG_PATH/bin"
 
 # hostrc -
   # Finding hostname
   [ -z $HOSTNAME ] || HOST=$HOSTNAME
-  hostrc="$configPath/hosts/$HOST"
+  hostrc="$CONFIG_PATH/hosts/$HOST"
   [ -f $hostrc ] && . $hostrc
