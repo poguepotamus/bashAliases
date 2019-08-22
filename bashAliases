@@ -20,3 +20,9 @@ bin="$configPath/bin"
   # python -
     alias howWheel="echo 'python setup.py sdist bdist_wheel'"
     alias piping="echo 'pip freeze | xargs pip uninstall -y'"
+
+# hostrc -
+  # Finding hostname
+  [ -z $HOSTNAME ] || HOST=$HOSTNAME
+  hostrc="$configPath/$HOST"
+  [ -f $hostrc ] && $hostrc
