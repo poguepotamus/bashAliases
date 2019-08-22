@@ -1,29 +1,32 @@
-#!/usr/bin/bash
+#!/bin/bash
 
-# import -
-configPath="$1"
-bin="$configPath/bin"
-. $bin/xdate
+# preferences -
+  alias ll="ls -lF --color"
+  alias lall="ls -alF --color"
+  alias lal="lall"
+  alias del="echo \"rm -rf\" "$1""
+# git -
+  alias glog='git log --oneline --decorate --graph --all'
+# python -
+  alias howWheel="echo 'python setup.py sdist bdist_wheel'"
+  alias piping="echo 'pip freeze | xargs pip uninstall -y'"
 
-# PATH -
-# Updating the path variable with our bin
-PATH=$PATH:$bin
+# output -
+warning() { >&2 echo -e "\e[33mWARNING\e[0m: \e[90mbashAliases\e[0m: $1"; }
 
-# notes -
-  # work-on
-    # Standby
+# CLAs -
+if [ -z "$1" ]; then
+  configPath="~/.customBash"
+  warning "Please add the config path to your bashAliases file execution in '~/.bashrc'"
+else
+  configPath="$1"
+fi
 
-# code -
-  # preferences -
-    alias ll="ls -lF --color"
-    alias lall="ls -alF --color"
-    alias lal="lall"
-    alias del="echo \"rm -rf\" "$1""
-  # git -
-    alias glog='git log --oneline --decorate --graph --all'
-  # python -
-    alias howWheel="echo 'python setup.py sdist bdist_wheel'"
-    alias piping="echo 'pip freeze | xargs pip uninstall -y'"
+# files -
+. "$configPath/bin/xdate"
+
+# environment -
+PATH="$PATH:$configPath/bin"
 
 # hostrc -
   # Finding hostname
