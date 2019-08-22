@@ -1,0 +1,2 @@
+#! /bin/bash
+echo 'HiVE-DS1 hostrc file executed'
