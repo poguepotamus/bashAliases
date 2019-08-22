@@ -1,8 +1,9 @@
 #!/usr/bin/bash
 
 # import -
-bin="/home/matthew/.customBash/bin"
-. $bin"/xdate"
+configPath="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+bin="$configPath/bin"
+. $bin/xdate
 
 # notes -
   # work-on
