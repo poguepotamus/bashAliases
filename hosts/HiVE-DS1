@@ -1,2 +1,4 @@
 #! /bin/bash
-echo 'HiVE-DS1 hostrc file executed'
+
+# Git Bash man files
+man() { gbMan; }
