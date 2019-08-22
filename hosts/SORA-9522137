@@ -1,1 +1,2 @@
 # This is a custom bash config file for the 13" dell notebook named SORA.
+echo "sora hostrc"
