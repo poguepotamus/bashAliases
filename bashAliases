@@ -5,6 +5,10 @@ configPath="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 bin="$configPath/bin"
 . $bin/xdate
 
+# PATH -
+# Updating the path variable with our bin
+PATH=$PATH:$bin
+
 # notes -
   # work-on
     # Standby
