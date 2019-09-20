@@ -7,3 +7,8 @@ Host kate
   HostName kate.matthewpogue.com
   Port 6220
   User Matthew
+
+Host agon
+  HostName agon.matthewpogue.com
+  Port 6220
+  User matthew
