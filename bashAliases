@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # constants -
-CONFIG_PATH="/home/matthew/.customBash"
+CONFIG_PATH=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 
 # preferences -
   alias ll="ls -lF --color"
