@@ -1,3 +1,5 @@
+#!/bin/bash
+
 cp $CONFIG_PATH/config/ssh/authorized_keys $HOME/.ssh/
 cp $CONFIG_PATH/config/ssh/config          $HOME/.ssh/
 
