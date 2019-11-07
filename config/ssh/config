@@ -1,6 +1,6 @@
 Host athena
-  HostName 146.71.78.130
-  Port 6220
+  HostName athena.matthewpogue.com
+  Port 6221
   User matthew
 
 Host kate
