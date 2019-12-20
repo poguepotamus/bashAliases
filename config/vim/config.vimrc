@@ -9,3 +9,6 @@ set wrap linebreak nolist
 
 " Turns on syntax highlighting
 syntax on
+
+" Making sure vim indents
+filetype indent on
