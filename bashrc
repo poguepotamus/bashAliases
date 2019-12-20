@@ -15,16 +15,22 @@ CONFIG_PATH=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
   alias piping="echo 'pip freeze | xargs pip uninstall -y'"
 
 # output -
-warning() { >&2 echo -e "\e[33mWARNING\e[0m: \e[90mbashAliases\e[0m: $1"; }
+warning() { >&2 echo -e "\e[33mWARNING\e[0m: \e[90mbashrc\e[0m: $1"; }
 
 # files -
-. "$CONFIG_PATH/bin/xdate"
 
 # environment -
 PATH="$PATH:$CONFIG_PATH/bin"
 
-# hostrc -
-  # Finding hostname
-  [ -z $HOSTNAME ] || HOST=$HOSTNAME
-  hostrc="$CONFIG_PATH/hosts/$HOST"
-  [ -f $hostrc ] && . $hostrc
+# systemrc -
+  # Defining where to look for our rc files
+  rcDir="$CONFIG_PATH/rcFiles"
+  headers=("$HOSTNAME" "$OSTYPE")
+
+  # For each of our headers
+  for header in ${headers[@]}; do
+    # Checking if our header exists
+    [ -z $header ] || head=$header
+    # Checking if the rc file exists, then execute it
+    [ -f "$rcDir/$head" ] && . "$rcDir/$head"
+  done
