@@ -1,2 +1,0 @@
-#! /bin/bash
-[ -z $1 ] && printf "What manual page do you want?" || $1 --help | less
