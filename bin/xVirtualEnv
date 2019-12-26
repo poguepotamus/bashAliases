@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# This script is used to activate a python virtualenv wherever it is.
+# Reading from the parent directory, this script attempts to find the virutalenv that its supposed to be using, then sources it.
+# This script MUST be executed in the root directory of the project as it uses the current working directory to find the virtual environment
+
+# Script global variables
+VIRTUALENV_FOLDER="$HOME/env"
+PACKAGE_NAME=`basename $(pwd -P)`
+
+# Checking which system we're on, then setting some variables to use later
+case `uname` in
+  "Linux")
+    scriptPath="$VIRTUALENV_FOLDER/$PACKAGE_NAME/bin/activate"
+    ;;
+  "Windows")
+    scriptPath="$VIRTUALENV_FOLDER/$PACKAGE_NAME/Scripts/activate"
+    ;;
+  *)
+    echo "System name '`uname`' not recognized."
+    exit
+    ;;
+esac
+
+# Attempting to activate the virtual environment
+if [[ -f $scriptPath ]]; then
+  echo "venv found, activating"
+  source $scriptPath
+else
+  echo "venv not found, generating a new one."
+  virtualenv "$VIRTUALENV_FOLDER/$PACKAGE_NAME"
+  # Attempting to activate venv again
+  source $scriptPath
+fi
