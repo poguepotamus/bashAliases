@@ -13,6 +13,7 @@ CONFIG_PATH=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 # python -
   alias howWheel="echo 'python setup.py sdist bdist_wheel'"
   alias piping="echo 'pip freeze | xargs pip uninstall -y'"
+  alias venv="source '$CONFIG_PATH/bin/xVirtualEnv'"
 
 # output -
 warning() { >&2 echo -e "\e[33mWARNING\e[0m: \e[90mbashrc\e[0m: $1"; }
