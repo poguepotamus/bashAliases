@@ -16,6 +16,8 @@ CONFIG_PATH=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 
 # output -
 warning() { >&2 echo -e "\e[33mWARNING\e[0m: \e[90mbashrc\e[0m: $1"; }
+fatal()   { >&2 echo -e "\e[31mFATAL\e[0m: \e[90mbashrc\e[0m: $1"; }
+success() { >&2 echo -e "\e[36mSUCCESS\e[0m: \e[90mbashrc\e[0m: $1"; }
 
 # files -
 
