@@ -5,7 +5,7 @@
 # This script MUST be executed in the root directory of the project as it uses the current working directory to find the virtual environment
 
 # Script global variables
-VIRTUALENV_FOLDER="$HOME/env"
+VIRTUALENV_FOLDER="$HOME/.venv"
 PACKAGE_NAME=`basename $(pwd -P)`
 
 # Checking which system we're on, then setting some variables to use later
