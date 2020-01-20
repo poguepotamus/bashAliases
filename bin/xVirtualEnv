@@ -7,28 +7,33 @@
 # Script global variables
 VIRTUALENV_FOLDER="$HOME/.venv"
 PACKAGE_NAME=`basename $(pwd -P)`
+stop=false
 
 # Checking which system we're on, then setting some variables to use later
-case `uname` in
-  "Linux")
+case "$OSTYPE" in
+  "linux-gnu")
     scriptPath="$VIRTUALENV_FOLDER/$PACKAGE_NAME/bin/activate"
     ;;
-  "Windows")
+  "msys")
     scriptPath="$VIRTUALENV_FOLDER/$PACKAGE_NAME/Scripts/activate"
     ;;
   *)
     echo "System name '`uname`' not recognized."
-    exit
+    stop=true
     ;;
 esac
 
-# Attempting to activate the virtual environment
-if [[ -f $scriptPath ]]; then
-  echo "venv found, activating"
-  source $scriptPath
+if [[ "$stop" = true ]]; then
+  echo "We do nothing cause we can't. :("
 else
-  echo "venv not found, generating a new one."
-  virtualenv "$VIRTUALENV_FOLDER/$PACKAGE_NAME"
-  # Attempting to activate venv again
-  source $scriptPath
+  # Attempting to activate the virtual environment
+  if [[ -f $scriptPath ]]; then
+    echo "venv found, activating"
+    source $scriptPath
+  else
+    echo "venv not found, generating a new one."
+    virtualenv "$VIRTUALENV_FOLDER/$PACKAGE_NAME"
+    # Attempting to activate venv again
+    source $scriptPath
+  fi
 fi

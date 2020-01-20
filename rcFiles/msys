@@ -1,0 +1,2 @@
+#!/bin/bash
+alias venv="source '$CONFIG_PATH/bin/xVirtualEnv'"
