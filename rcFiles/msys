@@ -1,2 +1,5 @@
 #!/bin/bash
 alias venv="source '$CONFIG_PATH/bin/xVirtualEnv'"
+function clip {
+	cat $1 > /dev/clipboard
+}
