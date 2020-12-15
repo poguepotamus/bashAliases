@@ -14,6 +14,9 @@ read -r -d '' VAR <<- EOM
 	. '$HOME/.eaftos/bashrc'
 EOM
 
+# Executing our install scripts to configure some packages
+. "$HOME"/.eaftos/config/install.sh
+
 # Writing to rc file if commands aren't there
 grep "$VAR" $runCommandsFile >> /dev/null
 if [[ $? != 0 ]]; then # Our message is not in the file, as grep did not find it.
