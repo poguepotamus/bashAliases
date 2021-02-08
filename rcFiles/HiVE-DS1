@@ -1,4 +1,0 @@
-#!/bin/bash
-
-# Git Bash man files
-man() { gbMan $1; }
