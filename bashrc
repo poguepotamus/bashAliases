@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # constants -
-CONFIG_PATH=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+EAFTOS_PATH=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 
 # preferences -
   alias ll="ls -lF --color"
@@ -13,7 +13,7 @@ CONFIG_PATH=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 # python -
   alias howWheel="echo 'python setup.py sdist bdist_wheel'"
   alias piping="echo 'pip freeze | xargs pip uninstall -y'"
-  alias venv="source '$CONFIG_PATH/bin/xVirtualEnv'"
+  alias venv="source '$EAFTOS_PATH/bin/xVirtualEnv'"
 
 # output -
 warning() { >&2 echo -e "\e[33mWARNING\e[0m: \e[90mbashrc\e[0m: $1"; }
@@ -23,11 +23,12 @@ success() { >&2 echo -e "\e[36mSUCCESS\e[0m: \e[90mbashrc\e[0m: $1"; }
 # files -
 
 # environment -
-PATH="$PATH:$CONFIG_PATH/bin"
+PATH="$PATH:$EAFTOS_PATH/bin"
+
 
 # systemrc -
   # Defining where to look for our rc files
-  rcDir="$CONFIG_PATH/rcFiles"
+  rcDir="$EAFTOS_PATH/rcFiles"
   headers=("$HOSTNAME" "$OSTYPE")
 
   # For each of our headers

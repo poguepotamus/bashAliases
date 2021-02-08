@@ -1,4 +1,4 @@
 #!/bin/bash
 alias copy='/usr/bin/xclip -selection clipboard'
 alias clip='copy'
-alias venv="source '$CONFIG_PATH/bin/xVirtualEnv'"
+alias venv="source '$EAFTOS_PATH/bin/xVirtualEnv'"
