@@ -10,6 +10,7 @@ EAFTOS_PATH=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
   alias del="echo \"rm -rf\" "$1""
 # git -
   alias glog='git log --oneline --decorate --graph --all'
+  alias todo="git grep -n -e @TODO"
 # python -
   alias howWheel="echo 'python setup.py sdist bdist_wheel'"
   alias piping="echo 'pip freeze | xargs pip uninstall -y'"
