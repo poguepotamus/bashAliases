@@ -1,0 +1,4 @@
+Host athena
+  HostName athena.matthewpogue.com
+  User matthew
+  Port 22
