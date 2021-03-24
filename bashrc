@@ -20,6 +20,7 @@ EAFTOS_PATH=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
   alias piping="echo 'pip freeze | xargs pip uninstall -y'"
   alias venv="source '$EAFTOS_PATH/bin/xVirtualEnv'"
   alias penv="pipenv shell"
+  export PYTHONPATH='.'
 
 # output -
 warning() { >&2 echo -e "\e[33mWARNING\e[0m: \e[90mbashrc\e[0m: $1"; }
