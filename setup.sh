@@ -1,4 +1,5 @@
 #!/bin/bash
+EAFTOS_PATH=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 
 # Some mild error checking
 if [ ! -f "$HOME"/.eaftos/bashrc ]; then
