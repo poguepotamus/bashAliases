@@ -1,4 +1,11 @@
 Host athena
   HostName athena.matthewpogue.com
   User matthew
+  Port 6221
+  IdentityFile ~/.ssh/id_rsa
+
+Host botb
+  HostName 3.81.73.247
+  User matthew
   Port 22
+  IdentityFile ~/.ssh/id_rsa
