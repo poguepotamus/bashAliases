@@ -15,7 +15,7 @@ filetype indent on
 
 " Spell checking
 " `zg` to add word to file
-set spell
+" set spell
 set spelllang=en
 set spellfile="$HOME/.eaftos/config/vim/dictionary"
 
