@@ -15,6 +15,7 @@ EAFTOS_PATH=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
   }
   alias todo="gtag todo 0"
   alias tags="gtag 'todo -e @wag -e @test' 0"
+  alias pyignore="curl https://raw.githubusercontent.com/github/gitignore/main/Python.gitignore -o .gitignore"
 # python -
   alias howWheel="echo 'python setup.py sdist bdist_wheel'"
   alias piping="echo 'pip freeze | xargs pip uninstall -y'"
