@@ -4,15 +4,15 @@ ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBsV0v1BXJDQrj29owp+ry8VYXaOyP4oGwfAmxKCd5cg
 # Neptune
 # matthew@neptune@git-bash
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEVJwc9uq6K4nNzWSZP+zaK/zLvA8W34Lw9dHdhCaY2k matthewpogue606@gmail.com
-# matthew@neptune@bash
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOjTp1g3HB3dImK/NaM7GOj7cWwKxuycuK6P/Hz1MFXw matthewpogue606@gmail.com
-
-
+# matthew@ajax@git-bash
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF5Xi0lAbswiN4uQbjYlhNr/xOsYc+R9088fvChOvSie matthewpogue606@gmail.com
 
 
 
 # Depricated keys
 #################
+# matthew@neptune@bash
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOjTp1g3HB3dImK/NaM7GOj7cWwKxuycuK6P/Hz1MFXw matthewpogue606@gmail.com
 # matthew@neptune@git-bash -- Expires June 2023
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDVNhmEMpmx0OtMrtU5s3VunmadJlLDX3TtK8Nb+Gaw2vWZpYBHpppTy+FXSHXZms7RwyIv0vqKkP/+zyYpSTxi9kHAVS3KkMa4e2HSZ3H/6WNHhEDUJB0/fkA6TNVolpjL4rQWGh1J0Q4eAj3Y3mG41apHLqyrwrwFLKH6CwqHWgP+XphprlY8R1P2OD47rwVzgFCQm51RuGEGKWbbeQ/5vlHMZA/YjHNAoNsdxn491uaMO9PZRTt+8ujCJhZj41+1bwJW0n+u2CLSBIlwUhlKPPauDTLmk6xCCoj+joo5gB5IE2Z92h8vbSZyZjiokVVf1TKwJCLYMKyejPbJN1cSsgmgTqfxJk2EWUoSowUsVYvJNW9kHqHiVu+39eEY/y62MSfTM3JuJxesrnbLrJblCykQK2L5/WDvdZ3RBJu41RZ536RUOFC/qj01o85mAfPFyRTPUHULaoFTpXthp5vu2hGK1NbLQc6gJBEOXklEX2T887/VO17t4XnIa4urO5s= matthew@neptune
 # matthew@neptune@bash -- Expires June 2023
