@@ -55,7 +55,7 @@ function get_ps1 {
   local currentPath="$colorPath\w$colorReset"
 
   # Checking for virutal env
-  if [ -n $VIRTUAL_ENV ]; then
+  if [ ! -v $VIRTUAL_ENV ]; then
     local penv_prompt="${VIRTUAL_ENV##*\\}"
     penv_prompt="${penv_prompt%%-*}"
     penv_prompt="($COLOR_OCHRE$penv_prompt$COLOR_RESET) "
